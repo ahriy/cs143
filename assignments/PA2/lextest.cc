@@ -65,8 +65,8 @@ int main(int argc, char** argv) {
 	while (optind < argc) {
 	    fin = fopen(argv[optind], "r");
 	    if (fin == NULL) {
-		cerr << "Could not open input file " << argv[optind] << endl;
-		exit(1);
+			cerr << "Could not open input file " << argv[optind] << endl;
+			exit(1);
 	    }
 
             // sm: the 'coolc' compiler's file-handling loop resets
@@ -79,8 +79,9 @@ int main(int argc, char** argv) {
 	    //
 	    cout << "#name \"" << argv[optind] << "\"" << endl;
 	    while ((token = cool_yylex()) != 0) {
-		dump_cool_token(cout, curr_lineno, token, cool_yylval);
+			dump_cool_token(cout, curr_lineno, token, cool_yylval);
 	    }
+		
 	    fclose(fin);
 	    optind++;
 	}
