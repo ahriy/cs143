@@ -62,8 +62,6 @@ extern YYSTYPE cool_yylval;
  * Define names for regular expressions here.
  */
 %x COMMENT STR
-CMTBEGIN "(*"
-CMTEND "*)"
 
 /* keywords */
 CLASS "class"
@@ -84,7 +82,6 @@ NEW "new"
 ISVOID "isvoid"
 
 /* constant */
-STR_CONST \"[^\0\n]*\"
 INT_CONST [0-9]+
 CHAR_CONST '[.\n]'
 BOOL_CONST ("t"+[Rr]+[Uu]+[Ee])|(f+[Aa]+[Ll]+[Ss]+[Ee])
@@ -264,7 +261,14 @@ ERROR [^ \n\t\r\f\v]+
     return ERROR;
 }
 
-<STR>[\n\t\r\b\f]  APPEND_STR(yytext[0]);
+<STR>\\n  { 
+  APPEND_STR('\n');
+}
+
+<STR>\\t  APPEND_STR('\t');
+<STR>\\r  APPEND_STR('\r');
+<STR>\\b  APPEND_STR('\b');
+<STR>\\f  APPEND_STR('\f');
 
 <STR>\\(.|\n)  {
     if (yytext[1] == '\n') {
