@@ -64,27 +64,27 @@ extern YYSTYPE cool_yylval;
 %x COMMENT STR
 
 /* keywords */
-CLASS "class"
-ELSE  "else"
-FI    "fi"
-IF "if"
-IN "in"
-INHERITS "inherits"
-LET "let"
-LOOP "loop"
-POOL "pool"
-THEN "then"
-WHILE "while"
-CASE "case"
-ESAC "esac"
-OF "of"
-NEW "new"
-ISVOID "isvoid"
+CLASS [Cc][Ll][Aa][Ss][Ss]
+ELSE  [Ee][Ll][Ss][Ee]
+FI    [Ff][Ii]
+IF [Ii][Ff]
+IN [Ii][Nn]
+INHERITS [Ii][Nn][Hh][Ee][Rr][Ii][Tt][Ss]
+LET [Ll][Ee][Tt]
+LOOP [Ll][Oo][Oo][Pp]
+POOL [Pp][Oo][Oo][Ll]
+THEN [Tt][Hh][Ee][Nn]
+WHILE [Ww][Hh][Ii][Ll][Ee]
+CASE [Cc][Aa][Ss][Ee]
+ESAC [Ee][Ss][Aa][Cc]
+OF [Oo][Ff]
+NEW [Nn][Ee][Ww]
+ISVOID [Ii][Ss][Vv][Oo][Ii][Dd]
 
 /* constant */
 INT_CONST [0-9]+
 CHAR_CONST '[.\n]'
-BOOL_CONST ("t"+[Rr]+[Uu]+[Ee])|(f+[Aa]+[Ll]+[Ss]+[Ee])
+BOOL_CONST (t[Rr][Uu][Ee])|(f[Aa][Ll][Ss][Ee])
 
 /* whitespace */
 WS [ \n\t\r\f\v]+
@@ -131,6 +131,8 @@ ERROR [^ \n\t\r\f\v]+
   }
 }
 
+--.* { }
+
 {INT_CONST} {
     cool_yylval.symbol = new IntEntry(yytext, yyleng, symbol_index++);
     return INT_CONST;    
@@ -170,7 +172,6 @@ ERROR [^ \n\t\r\f\v]+
   * Keywords are case-insensitive except for the values true and false,
   * which must begin with a lower-case letter.
   */
-
 {CLASS} { return CLASS; }
 {ELSE} { return ELSE; }
 {FI} { return FI; }
