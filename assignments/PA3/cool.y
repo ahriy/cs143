@@ -133,10 +133,16 @@
     %type <program> program
     %type <classes> class_list
     %type <class_> class
-    
+  
     /* You will want to change the following line. */
     %type <features> dummy_feature_list
+    %type <features> true_feature_list
+    %type <formals> dummy_formal_list
+    %type <formals> formal_list_second
+    %type <feature> feature
+    %type <formal> formal
     
+  
     /* Precedence declarations go here. */
     
     
@@ -167,8 +173,42 @@
     /* Feature list may be empty, but no empty features in list. */
     dummy_feature_list:		/* empty */
     {  $$ = nil_Features(); }
+    | true_feature_list
+    {  $$ = $1 }
+    ;
+
+    true_feature_list
+    : feature /* single feature */
+    { $$ = single_Features($1); }
+    | true_feature_list feature /* several features */
+    { $$ = append_Features($1, single_Features($2));}
+    ;
     
-    
+    feature
+    : OBJECTID '(' dummy_formal_list ')' ':' TYPEID '{' expr '}'
+    { $$ = method($1, $3, $6, $8); }
+    | OBJECTID ':' TYPEID
+    { $$ = attr($1, $3, no_expr()); }
+    | OBJECTID ':' TYPEID ASSIGN expr
+    { $$ = attr($1, $3, $5); }
+    ;
+
+    dummy_formal_list:
+    { $$ = nil_Formals(); }
+    | formal formal_list_second
+    { $$ = append_Formals($2, single_Formals($1)); }
+    ;
+
+    formal_list_second:
+    { $$ = nil_Formals(); }
+    | ',' formal formal_list_second
+    { $$ = append_Formals(single_Formals($2), $3); }
+    ;
+
+    formal
+    : OBJECTID ':' TYPEID
+    { $$ = formal($1, $3); }
+    ;
     /* end of grammar */
     %%
     
