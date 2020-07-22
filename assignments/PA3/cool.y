@@ -141,7 +141,7 @@
     %type <formals> formal_list_second
     %type <feature> feature
     %type <formal> formal
-    
+    %type <expression> expr
   
     /* Precedence declarations go here. */
     
@@ -174,7 +174,7 @@
     dummy_feature_list:		/* empty */
     {  $$ = nil_Features(); }
     | true_feature_list
-    {  $$ = $1 }
+    {  $$ = $1; }
     ;
 
     true_feature_list
@@ -185,29 +185,48 @@
     ;
     
     feature
-    : OBJECTID '(' dummy_formal_list ')' ':' TYPEID '{' expr '}'
+    : OBJECTID '(' dummy_formal_list ')' ':' TYPEID '{' expr '}' ';'
     { $$ = method($1, $3, $6, $8); }
-    | OBJECTID ':' TYPEID
+    | OBJECTID ':' TYPEID ';'
     { $$ = attr($1, $3, no_expr()); }
-    | OBJECTID ':' TYPEID ASSIGN expr
+    | OBJECTID ':' TYPEID ASSIGN expr ';'
     { $$ = attr($1, $3, $5); }
     ;
 
     dummy_formal_list:
     { $$ = nil_Formals(); }
-    | formal formal_list_second
-    { $$ = append_Formals($2, single_Formals($1)); }
+    | dummy_formal_list formal
+    { $$ = append_Formals($1, single_Formals($2)); }
     ;
 
+    /*
     formal_list_second:
     { $$ = nil_Formals(); }
     | ',' formal formal_list_second
     { $$ = append_Formals(single_Formals($2), $3); }
     ;
+    */
 
     formal
     : OBJECTID ':' TYPEID
     { $$ = formal($1, $3); }
+    ;
+
+    expr
+    : OBJECTID ASSIGN expr
+    { $$ = assign($1, $3); }
+    | OBJECTID '(' ')'
+    { }
+    | LET OBJECTID ':' TYPEID ASSIGN expr IN expr
+    { $$ = let($2, $4, $6, $8); }
+    | expr '+' expr
+    { $$ = plus($1, $3); }
+    | '(' expr ')'
+    { $$ = $2; }
+    | OBJECTID
+    { $$ = object($1); }
+    | INT_CONST
+    { $$ = int_const($1); }
     ;
     /* end of grammar */
     %%
