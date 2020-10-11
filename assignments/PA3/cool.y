@@ -138,10 +138,11 @@
     %type <features> dummy_feature_list
     %type <features> true_feature_list
     %type <formals> dummy_formal_list
-    %type <formals> formal_list_second
     %type <feature> feature
     %type <formal> formal
     %type <expression> expr
+    %type <expressions> dummy_expr_para_list
+
   
     /* Precedence declarations go here. */
     
@@ -199,14 +200,6 @@
     { $$ = append_Formals($1, single_Formals($2)); }
     ;
 
-    /*
-    formal_list_second:
-    { $$ = nil_Formals(); }
-    | ',' formal formal_list_second
-    { $$ = append_Formals(single_Formals($2), $3); }
-    ;
-    */
-
     formal
     : OBJECTID ':' TYPEID
     { $$ = formal($1, $3); }
@@ -215,18 +208,33 @@
     expr
     : OBJECTID ASSIGN expr
     { $$ = assign($1, $3); }
-    | OBJECTID '(' ')'
-    { }
+    /* dispatch */
+    | OBJECTID '(' dummy_expr_para_list ')'
+    { $$ = dispatch(object(idtable.add_string("self")), $1, $3); }
+    | IF expr THEN expr ELSE expr FI
+    { $$ = cond($2, $4, $6); }
+    | WHILE expr LOOP expr POOL
+    { $$ = loop($2, $4); }
     | LET OBJECTID ':' TYPEID ASSIGN expr IN expr
     { $$ = let($2, $4, $6, $8); }
     | expr '+' expr
     { $$ = plus($1, $3); }
     | '(' expr ')'
     { $$ = $2; }
-    | OBJECTID
-    { $$ = object($1); }
     | INT_CONST
     { $$ = int_const($1); }
+    | STR_CONST
+    { $$ = string_const($1); }
+    | OBJECTID
+    { $$ = object($1); }
+    ;
+
+    dummy_expr_para_list: /* empty */
+    { $$ = nil_Expressions(); }
+    | expr
+    { $$ = single_Expressions($1); }
+    | dummy_expr_para_list ',' expr 
+    { $$ = append_Expressions($1, single_Expressions($3)); }
     ;
     /* end of grammar */
     %%
