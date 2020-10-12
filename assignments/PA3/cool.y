@@ -142,6 +142,8 @@
     %type <formal> formal
     %type <expression> expr
     %type <expressions> dummy_expr_para_list
+    %type <cases> cases
+    %type <expressions> exprs
 
   
     /* Precedence declarations go here. */
@@ -215,10 +217,34 @@
     { $$ = cond($2, $4, $6); }
     | WHILE expr LOOP expr POOL
     { $$ = loop($2, $4); }
+    | '{' exprs '}'
+    { $$ = block($2); }
     | LET OBJECTID ':' TYPEID ASSIGN expr IN expr
     { $$ = let($2, $4, $6, $8); }
+    | CASE expr OF cases ESAC
+    { $$ = typcase($2, $4); }
+    | NEW TYPEID
+    { $$ = new_($2); }
+    | ISVOID expr
+    { $$ = isvoid($2); }
     | expr '+' expr
     { $$ = plus($1, $3); }
+    | expr '-' expr
+    { $$ = sub($1, $3); }
+    | expr '*' expr
+    { $$ = mul($1, $3); }
+    | expr '/' expr
+    { $$ = divide($1, $3); }
+    | '~' expr
+    { $$ = neg($2); }
+    | expr '<' expr
+    { $$ = lt($1, $3); }
+    | expr LE expr
+    { $$ = leq($1, $3); }
+    | expr '=' expr
+    { $$ = eq($1, $3); }
+    | NOT expr
+    { $$ = comp($2); }
     | '(' expr ')'
     { $$ = $2; }
     | INT_CONST
@@ -227,7 +253,23 @@
     { $$ = string_const($1); }
     | OBJECTID
     { $$ = object($1); }
+    | BOOL_CONST
+    { $$ = bool_const($1); }
     ;
+
+    exprs
+    : expr ';'
+    { $$ = single_Expressions($1); }
+    | exprs expr ';'
+    { $$ = append_Expressions($1, single_Expressions($2)); }
+    ;
+    cases
+    : OBJECTID ':' TYPEID DARROW expr ';'
+    { $$ = single_Cases(branch($1, $3, $5)); }
+    | cases OBJECTID ':' TYPEID DARROW expr ';'
+    { $$ = append_Cases($1, single_Cases(branch($2, $4, $6))); }
+    ;
+
 
     dummy_expr_para_list: /* empty */
     { $$ = nil_Expressions(); }

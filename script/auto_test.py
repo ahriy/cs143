@@ -13,6 +13,7 @@ MYDIR = ""
 case_list = open(CASEFILE).readlines()
 golden_result = {}
 my_result = {}
+PA_mapping = {"PA2": "lexer", "PA3": "parser"}
 def run_cmd(cmd, timeout=None):
     try:
         exec_status = -1
@@ -80,15 +81,19 @@ def run_cmd(cmd, timeout=None):
 
 def mycmd(cmd):
     print(">>>>" + cmd)
-    return run_cmd(cmd, 1)[1]
+    result = run_cmd(cmd, 5)
+    if (result[2] == "timeout"):
+        exit(-1)
+    else :
+        return result[1]
 
-def get_my(case):
-    mycmd("cd {} && make clean && make -j && make lexer".format(MYDIR))
+def get_my(case, pa):
+    mycmd("cd {} && make clean && make -j && make {} -j".format(MYDIR, PA_mapping[pa]))
     mycmd("cd {} && ./mycoolc {}".format(MYDIR, CASE_DIR + '/' + case + ".cl"))
     my_result[case] = mycmd("spim {}".format(CASE_DIR + '/' + case + ".s"))
     mycmd("rm {}".format(CASE_DIR + '/' + case + ".s"))
 
-def get_golden(case):
+def get_golden(case, pa):
     mycmd("coolc {}".format(CASE_DIR + '/' + case + ".cl"))
     my_result[case] = mycmd("spim {}".format(CASE_DIR + '/' + case + ".s"))
     golden_result[case] = mycmd("spim {}".format(CASE_DIR + '/' + case + ".s"))
@@ -107,21 +112,23 @@ if __name__ == "__main__":
     init()
     
     if (len(sys.argv) < 3):
-        print("format is python auto_test.py [clean|test] $PAx")
+        print("format is python auto_test.py [clean|run] $PAx")
         exit(1)
     cmd = sys.argv[1]
-    MYDIR = ROOT + "/assignments/" + sys.argv[2]
+    pa = sys.argv[2]
+    MYDIR = ROOT + "/assignments/" + pa
 
     if (cmd == "clean"):
         clean_s()
     elif (cmd == "run"):
         clean_s()
         for case in case_list:
-            get_golden(case)
-            get_my(case)
+            get_golden(case, pa)
+            get_my(case, pa)
         for case in case_list:
             if (golden_result[case] != my_result[case]):
                 print("===== case {} result for golden is ===== \n{}".format(case, golden_result[case]))
                 print("===== case {} result for my is ===== \n{}".format(case, my_result[case]))
+                break
             else:
                 print("case {} PASS".format(case))
