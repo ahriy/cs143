@@ -33,6 +33,17 @@ public:
   ostream& semant_error(Symbol filename, tree_node *t);
 };
 
+class VarSymbolType;
+typedef VarSymbolType *VarSymbolTypeP;
 
+class VarSymbolType {
+
+};
+
+class FuncSymbolType;
+typedef FuncSymbolType *FuncSymbolTypeP;
+class FuncSymbolType {
+
+};
 #endif
 

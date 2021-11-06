@@ -246,9 +246,22 @@ void program_class::semant()
 
     /* some semantic analysis code may go here */
 
+    /*
+    1. Look at all classes and build an inheritance graph.
+    2. Check that the graph is well-formed.
+    3. For each class
+    (a) Traverse the AST, gathering all visible declarations in a symbol table.
+    (b) Check each expression for type correctness.
+    (c) Annotate the AST with types.
+    */
+
+   SymbolTable<Symbol, VarSymbolType> *vartable = new SymbolTable<Symbol, VarSymbolType>();
+   SymbolTable<Symbol, FuncSymbolType> *functable = new SymbolTable<Symbol, FuncSymbolType>();
+   annotate_with_types();
+
     if (classtable->errors()) {
-	cerr << "Compilation halted due to static semantic errors." << endl;
-	exit(1);
+        cerr << "Compilation halted due to static semantic errors." << endl;
+        exit(1);
     }
 }
 
