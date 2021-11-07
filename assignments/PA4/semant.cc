@@ -36,7 +36,6 @@ Symbol
     str_field,
     substr,
     type_name,
-    cur_class,
     val;
 
 //
@@ -71,16 +70,40 @@ static void initialize_constants(void)
     str_field   = idtable.add_string("_str_field");
     substr      = idtable.add_string("substr");
     type_name   = idtable.add_string("type_name");
-    cur_class   = idtable.add_string("cur_class");
     val         = idtable.add_string("_val");
 }
 
 
-
-ClassTable::ClassTable(Classes classes) : semant_errors(0) , error_stream(cerr) {
+ClassTable::ClassTable(Classes classes) : semant_errors(0) , error_stream(cerr)
+{
 
     /* Fill this in */
+    install_basic_classes();
+    for(int i = classes->first(); classes->more(i); i = classes->next(i)) {
+        add_class_to_classlist(classes->nth(i));
+    }
+}
 
+bool ClassTable::add_class_to_classlist(Class_ c)
+{
+    for(int i = classlist->first(); classlist->more(i); i = classlist->next(i)) {
+        if (classlist->nth(i)->get_class_name() == c->get_class_name()) {
+            semant_error(c);
+        }
+    }
+    classlist = classlist->append(classlist, list_node<Class_>::single(c));
+}
+
+Class_ ClassTable::get_class_by_symbol(Symbol s)
+{
+    /* Fill this in */
+    for(int i = classlist->first(); classlist->more(i); i = classlist->next(i)) {
+        if (classlist->nth(i)->get_class_name() == s) {
+            return classlist->nth(i);
+        }
+    }
+
+    return NULL;
 }
 
 void ClassTable::install_basic_classes() {
@@ -116,7 +139,7 @@ void ClassTable::install_basic_classes() {
 					       single_Features(method(type_name, nil_Formals(), Str, no_expr()))),
 			       single_Features(method(copy, nil_Formals(), SELF_TYPE, no_expr()))),
 	       filename);
-
+    add_class_to_classlist(Object_class);
     // 
     // The IO class inherits from Object. Its methods are
     //        out_string(Str) : SELF_TYPE       writes a string to the output
@@ -137,7 +160,7 @@ void ClassTable::install_basic_classes() {
 					       single_Features(method(in_string, nil_Formals(), Str, no_expr()))),
 			       single_Features(method(in_int, nil_Formals(), Int, no_expr()))),
 	       filename);  
-
+    add_class_to_classlist(IO_class);
     //
     // The Int class has no methods and only a single attribute, the
     // "val" for the integer. 
@@ -147,13 +170,13 @@ void ClassTable::install_basic_classes() {
 	       Object,
 	       single_Features(attr(val, prim_slot, no_expr())),
 	       filename);
-
+    add_class_to_classlist(Int_class);
     //
     // Bool also has only the "val" slot.
     //
     Class_ Bool_class =
 	class_(Bool, Object, single_Features(attr(val, prim_slot, no_expr())),filename);
-
+    add_class_to_classlist(Bool_class);
     //
     // The class Str has a number of slots and operations:
     //       val                                  the length of the string
@@ -182,6 +205,7 @@ void ClassTable::install_basic_classes() {
 						      Str, 
 						      no_expr()))),
 	       filename);
+    add_class_to_classlist(Str_class);
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -233,12 +257,14 @@ ostream& ClassTable::semant_error()
  */
 SymbolTable<Symbol, VarSymbolType> *vartable;
 SymbolTable<Symbol, FuncSymbolType> *functable;
+ClassTable *classtable;
+
 void program_class::semant()
 {
     initialize_constants();
 
     /* ClassTable constructor may do some semantic analysis */
-    ClassTable *classtable = new ClassTable(classes);
+    classtable = new ClassTable(classes);
 
     /* some semantic analysis code may go here */
 

@@ -24,10 +24,13 @@ private:
   int semant_errors;
   void install_basic_classes();
   ostream& error_stream;
+  Classes classlist;
 
 public:
   ClassTable(Classes);
+  Class_ get_class_by_symbol(Symbol s);
   int errors() { return semant_errors; }
+  bool add_class_to_classlist(Class_ c);
   ostream& semant_error();
   ostream& semant_error(Class_ c);
   ostream& semant_error(Symbol filename, tree_node *t);
@@ -55,7 +58,7 @@ class FuncSymbolType {
 
 extern SymbolTable<Symbol, VarSymbolType> *vartable;
 extern SymbolTable<Symbol, FuncSymbolType> *functable;
-
+extern ClassTable *classtable;
 //////////////////////////////////////////////////////////////////////
 //
 // Symbols
@@ -91,7 +94,6 @@ extern Symbol
     str_field,
     substr,
     type_name,
-    cur_class,
     val;
 
 #endif

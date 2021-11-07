@@ -59,13 +59,19 @@ void annotate_with_types();
 #define Class__EXTRAS                   \
 virtual Symbol get_filename() = 0;      \
 virtual void dump_with_types(ostream&,int) = 0; \
-virtual void annotate_with_types() = 0; 
+virtual void annotate_with_types() = 0; \
+virtual Symbol get_class_name() = 0; \
+virtual Features get_class_features() = 0; \
+virtual Symbol get_class_parent() = 0;
 
 
 #define class__EXTRAS                                 \
 Symbol get_filename() { return filename; }             \
 void dump_with_types(ostream&,int);               \
-void annotate_with_types();        
+void annotate_with_types();   \
+Symbol get_class_name() { return name; } \
+Features get_class_features() { return features; } \
+Symbol get_class_parent() { return parent; }
 
 
 #define Feature_EXTRAS                                        \
@@ -77,7 +83,9 @@ virtual void annotate_with_types() = 0;
 void dump_with_types(ostream&,int);    \
 void annotate_with_types();   
 
-
+#define method_EXTRAS \
+Symbol get_method_name() { return name; } \
+Symbol get_return_type() { return return_type; }
 
 
 
