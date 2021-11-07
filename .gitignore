@@ -1,2 +1,8 @@
 .vscode/
 *.d
+*.o
+*.s
+cgen
+lexer
+parser
+semant

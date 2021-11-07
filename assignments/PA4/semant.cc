@@ -10,16 +10,7 @@
 extern int semant_debug;
 extern char *curr_filename;
 
-//////////////////////////////////////////////////////////////////////
-//
-// Symbols
-//
-// For convenience, a large number of symbols are predefined here.
-// These symbols include the primitive type and method names, as well
-// as fixed names used by the runtime system.
-//
-//////////////////////////////////////////////////////////////////////
-static Symbol 
+Symbol 
     arg,
     arg2,
     Bool,
@@ -45,7 +36,9 @@ static Symbol
     str_field,
     substr,
     type_name,
+    cur_class,
     val;
+
 //
 // Initializing the predefined symbols.
 //
@@ -78,6 +71,7 @@ static void initialize_constants(void)
     str_field   = idtable.add_string("_str_field");
     substr      = idtable.add_string("substr");
     type_name   = idtable.add_string("type_name");
+    cur_class   = idtable.add_string("cur_class");
     val         = idtable.add_string("_val");
 }
 
@@ -237,6 +231,8 @@ ostream& ClassTable::semant_error()
      errors. Part 2) can be done in a second stage, when you want
      to build mycoolc.
  */
+SymbolTable<Symbol, VarSymbolType> *vartable;
+SymbolTable<Symbol, FuncSymbolType> *functable;
 void program_class::semant()
 {
     initialize_constants();
@@ -255,8 +251,8 @@ void program_class::semant()
     (c) Annotate the AST with types.
     */
 
-   SymbolTable<Symbol, VarSymbolType> *vartable = new SymbolTable<Symbol, VarSymbolType>();
-   SymbolTable<Symbol, FuncSymbolType> *functable = new SymbolTable<Symbol, FuncSymbolType>();
+   vartable = new SymbolTable<Symbol, VarSymbolType>();
+   functable = new SymbolTable<Symbol, FuncSymbolType>();
    annotate_with_types();
 
     if (classtable->errors()) {

@@ -8,6 +8,19 @@
 #include "tree.h"
 #include "cool-tree.h"
 #include "utilities.h"
+#include "symtab.h"
+#include "semant.h"
+
+void warn_error(char *msg, tree_node* t)
+{
+   cerr << "[warn] at line " << t->get_line_number() << " with " << msg;
+}
+
+static bool assert_type_sound(Symbol type_child, Symbol type_parent) 
+{
+   return true;
+}
+
 //
 void program_class::annotate_with_types()
 {
@@ -21,32 +34,33 @@ void program_class::annotate_with_types()
 //
 void class__class::annotate_with_types()
 {
+   vartable->enterscope();
+   functable->enterscope();
+   vartable->addid(self, new VarSymbolType(self, SELF_TYPE));
+   vartable->addid(cur_class, new VarSymbolType(cur_class, name));
    for(int i = features->first(); features->more(i); i = features->next(i))
      features->nth(i)->annotate_with_types();
+   vartable->exitscope();
+   functable->exitscope();
 }
-
-
-//
-// annotate_with_types for method_class first prints that this is a method,
-// then prints the method name followed by the formal parameters
-// (another use of an iterator, this time access all of the list members
-// of type Formal), the return type, and finally calls dump_type recursively
-// on the method body. 
 
 void method_class::annotate_with_types()
 {
+   vartable->enterscope();
+   functable->enterscope();
    for(int i = formals->first(); formals->more(i); i = formals->next(i))
      formals->nth(i)->annotate_with_types();
    expr->annotate_with_types();
+   vartable->exitscope();
+   functable->exitscope();
 }
 
-//
-//  attr_class::annotate_with_types prints the attribute name, type declaration,
-//  and any initialization expression at the appropriate offset.
-//
 void attr_class::annotate_with_types()
 {
+   VarSymbolType *v = new VarSymbolType(name, type_decl);
+   vartable->addid(name, v);
    init->annotate_with_types();
+   assert_type_sound(init->type, type_decl);
 }
 
 //
@@ -55,6 +69,8 @@ void attr_class::annotate_with_types()
 //
 void formal_class::annotate_with_types()
 {
+   VarSymbolType *v = new VarSymbolType(name, type_decl);
+   vartable->addid(name, v);
 }
 
 //
@@ -75,6 +91,13 @@ void branch_class::annotate_with_types()
 void assign_class::annotate_with_types()
 {
    expr->annotate_with_types();
+   this->type = expr->type;
+   VarSymbolType *v = vartable->lookup(name);
+   if (v == NULL) {
+      warn_error("variable not declared before use in assign_class\n", this);
+   } else {
+      assert_type_sound(expr->type, v->type);
+   }
 }
 
 //
@@ -142,6 +165,12 @@ void block_class::annotate_with_types()
 {
    for(int i = body->first(); body->more(i); i = body->next(i))
      body->nth(i)->annotate_with_types();
+   if (body->len() != 0) {
+      this->type = body->nth(body->len() - 1)->type;
+   } else {
+      this->type = Object;
+   }
+   
 }
 
 void let_class::annotate_with_types()
@@ -205,18 +234,29 @@ void comp_class::annotate_with_types()
 
 void int_const_class::annotate_with_types()
 {
+   type = Int;
 }
 
 void bool_const_class::annotate_with_types()
 {
+   type = Bool;
 }
 
 void string_const_class::annotate_with_types()
 {
+   type = Str;
 }
 
 void new__class::annotate_with_types()
 {
+   if (type_name == SELF_TYPE) {
+      VarSymbolType *v = vartable->lookup(cur_class);
+      if (v == NULL) {
+         fatal_error("unexpected semantic error, cur_class is not initialized!\n");
+      }
+      type = v->type;
+   }
+   type = type_name;
 }
 
 void isvoid_class::annotate_with_types()
@@ -230,5 +270,13 @@ void no_expr_class::annotate_with_types()
 
 void object_class::annotate_with_types()
 {
+   VarSymbolType *v = vartable->lookup(name);
+   if (v == NULL) {
+      warn_error("variable not declared before use in object_class\n", this);
+      this->type = Object;
+
+   } else {
+      this->type = v->type;
+   }
 }
 
