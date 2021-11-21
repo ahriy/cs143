@@ -10,7 +10,9 @@ char *curr_filename;
 
 void handle_flags(int argc, char *argv[]);
 
+int hang = 0;
 int main(int argc, char *argv[]) {
+  while(hang);
   handle_flags(argc,argv);
   ast_yyparse();
   ast_root->semant();

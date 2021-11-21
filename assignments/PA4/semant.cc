@@ -76,7 +76,6 @@ static void initialize_constants(void)
 
 ClassTable::ClassTable(Classes classes) : semant_errors(0) , error_stream(cerr)
 {
-
     /* Fill this in */
     install_basic_classes();
     for(int i = classes->first(); classes->more(i); i = classes->next(i)) {
@@ -86,17 +85,31 @@ ClassTable::ClassTable(Classes classes) : semant_errors(0) , error_stream(cerr)
 
 bool ClassTable::add_class_to_classlist(Class_ c)
 {
+    if (c == NULL) {
+        semant_error(c);
+    }
+    if (classlist == NULL) {
+        classlist = list_node<Class_>::single(c);
+        return true;
+    }
+    
     for(int i = classlist->first(); classlist->more(i); i = classlist->next(i)) {
         if (classlist->nth(i)->get_class_name() == c->get_class_name()) {
             semant_error(c);
+            return false;
         }
     }
     classlist = classlist->append(classlist, list_node<Class_>::single(c));
+    return true;
 }
 
 Class_ ClassTable::get_class_by_symbol(Symbol s)
 {
     /* Fill this in */
+    if (classlist == NULL) {
+        return NULL;
+    }
+
     for(int i = classlist->first(); classlist->more(i); i = classlist->next(i)) {
         if (classlist->nth(i)->get_class_name() == s) {
             return classlist->nth(i);
@@ -129,7 +142,6 @@ void ClassTable::install_basic_classes() {
     //
     // There is no need for method bodies in the basic classes---these
     // are already built in to the runtime system.
-
     Class_ Object_class =
 	class_(Object, 
 	       No_class,
