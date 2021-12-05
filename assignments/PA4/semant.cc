@@ -107,6 +107,11 @@ Class_ ClassTable::get_class_by_symbol(Symbol s)
 {
     /* Fill this in */
     if (classlist == NULL) {
+        fatal_error("classtable has not been initialized!\n");
+        return NULL;
+    }
+
+    if (s == NULL) {
         return NULL;
     }
 
