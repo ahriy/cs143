@@ -200,10 +200,10 @@ public:
 // define constructor - attr
 class attr_class : public Feature_class {
 protected:
-   Symbol name;
-   Symbol type_decl;
    Expression init;
 public:
+   Symbol name;
+   Symbol type_decl;
    attr_class(Symbol a1, Symbol a2, Expression a3) {
       name = a1;
       type_decl = a2;
@@ -246,10 +246,11 @@ public:
 // define constructor - branch
 class branch_class : public Case_class {
 protected:
+
+public:
    Symbol name;
    Symbol type_decl;
    Expression expr;
-public:
    branch_class(Symbol a1, Symbol a2, Expression a3) {
       name = a1;
       type_decl = a2;
@@ -293,10 +294,10 @@ public:
 class static_dispatch_class : public Expression_class {
 protected:
    Expression expr;
-   Symbol type_name;
-   Symbol name;
    Expressions actual;
 public:
+   Symbol type_name;
+   Symbol name;
    static_dispatch_class(Expression a1, Symbol a2, Symbol a3, Expressions a4) {
       expr = a1;
       type_name = a2;

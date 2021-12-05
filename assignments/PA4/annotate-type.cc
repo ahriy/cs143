@@ -32,7 +32,23 @@ static void semant_error(char *msg)
 {
    cerr << "[semant error " << cur_class->get_filename()->get_string() << ":" << cur_line << "] " << msg << endl;
 }
-      
+
+static void add_ancestor_features()
+{
+   Class_ tmp = classtable->get_class_by_symbol(cur_class->get_class_parent());
+   while (tmp != NULL) {
+      Features features = tmp->get_class_features();
+      for(int i = features->first(); features->more(i); i = features->next(i)) {
+         Feature f = features->nth(i);
+         attr_class *attr = dynamic_cast<attr_class*>(f);
+         if (attr) {
+            vartable->addid(attr->name, new VarSymbolType(attr->name, attr->type_decl));
+         }
+      }
+      tmp = classtable->get_class_by_symbol(tmp->get_class_parent());
+   }
+   
+}
 
 static method_class *get_method_declare(Symbol cs, Symbol method_name)
 {
@@ -118,7 +134,7 @@ static bool class_is_comfort(Symbol cs1, Symbol cs2)
    }
 } 
 
-Symbol find_least_ancestor(Symbol cs1, Symbol cs2)
+Symbol type_join(Symbol cs1, Symbol cs2)
 {
 
    if (!class_check(cs1) || !class_check(cs2)) {
@@ -177,6 +193,7 @@ void class__class::annotate_with_types()
    scope_enter();
    vartable->addid(self, new VarSymbolType(self, SELF_TYPE));
    cur_class = this;
+   add_ancestor_features();
    
    for(int i = features->first(); features->more(i); i = features->next(i)) {
       features->nth(i)->annotate_with_types();
@@ -200,6 +217,10 @@ void method_class::annotate_with_types()
 void attr_class::annotate_with_types()
 {
    cur_line = this->get_line_number();
+   if (vartable->lookup(name) != NULL) {
+      sprintf(log_buf, "redef of %s", name->get_string());
+      semant_error(log_buf);
+   }
    VarSymbolType *v = new VarSymbolType(name, type_decl);
    vartable->addid(name, v);
    init->annotate_with_types();
@@ -227,8 +248,11 @@ void formal_class::annotate_with_types()
 void branch_class::annotate_with_types()
 {
    cur_line = this->get_line_number();
+   scope_enter();
+   VarSymbolType *v = new VarSymbolType(name, type_decl);
+   vartable->addid(name, v);
    expr->annotate_with_types();
-   //TODO
+   scope_exits();
 }
 
 //
@@ -264,7 +288,16 @@ void static_dispatch_class::annotate_with_types()
    expr->annotate_with_types();
    for(int i = actual->first(); actual->more(i); i = actual->next(i))
      actual->nth(i)->annotate_with_types();
-   //TODO
+   method_class *m = NULL;
+   m = get_method_declare(this->type_name, name);
+   if (m == NULL) {
+      sprintf(log_buf, "method %s:%s not declared before use in dispatch_class",
+               this->type_name->get_string(), name->get_string());
+      semant_error(log_buf);
+      this->type = Object;
+      return;
+   }
+   this->type = m->get_return_type();
 }
 
 //
@@ -274,11 +307,12 @@ void static_dispatch_class::annotate_with_types()
 void dispatch_class::annotate_with_types()
 {
    cur_line = this->get_line_number();
-   method_class *m = NULL;
+   
    expr->annotate_with_types();
    for(int i = actual->first(); actual->more(i); i = actual->next(i))
      actual->nth(i)->annotate_with_types();
 
+   method_class *m = NULL;
    if (expr->get_type() == SELF_TYPE) {
       m = get_method_declare(cur_class->get_class_name(), name);
    } else {
@@ -286,13 +320,13 @@ void dispatch_class::annotate_with_types()
    }
    
    if (m == NULL) {
-      sprintf(log_buf, "method %s:%s not declared before use in dispatch_class in %s:%d",
-               expr->get_type()->get_string(), name->get_string(), cur_class->get_filename()->get_string(), 
-               this->get_line_number());
+      sprintf(log_buf, "method %s:%s not declared before use in dispatch_class",
+               expr->get_type()->get_string(), name->get_string());
       semant_error(log_buf);
+      this->type = Object;
       return;
    }
-   type = m->get_return_type();
+   this->type = m->get_return_type();
 }
 
 //
@@ -309,8 +343,7 @@ void cond_class::annotate_with_types()
       semant_error("pred is not Bool");
    }
 
-   
-   this->type = find_least_ancestor(then_exp->get_type(), else_exp->get_type());
+   this->type = type_join(then_exp->get_type(), else_exp->get_type());
    cerr << "cond noted " << this->type->get_string() << " " << cur_class->get_filename() << ":" << this->get_line_number() << " " << endl;
 }
 
@@ -338,9 +371,19 @@ void typcase_class::annotate_with_types()
 {
    cur_line = this->get_line_number();
    expr->annotate_with_types();
-   for(int i = cases->first(); cases->more(i); i = cases->next(i))
-     cases->nth(i)->annotate_with_types();
-   //TODO
+   for(int i = cases->first(); cases->more(i); i = cases->next(i)) {
+      cases->nth(i)->annotate_with_types();
+      branch_class* b = dynamic_cast<branch_class *>(cases->nth(i));
+      if (b == NULL) {
+         semant_error("bad branch class");
+      } else {
+         if (i == cases->first()) {
+            this->type = b->expr->type;
+         } else {
+            this->type = type_join(this->type, b->expr->type);
+         }
+      }
+   }
 }
 
 //
@@ -373,18 +416,26 @@ void let_class::annotate_with_types()
    this->type = body->get_type();
 }
 
+static bool type_expect_check(Symbol actual, Symbol expect)
+{
+   if (actual != expect) {
+      sprintf(log_buf, "e1->type is %s but expected is %s", 
+                        actual? actual->get_string() : "NULL",
+                        expect? expect->get_string() : "NULL");
+      semant_error(log_buf);
+      return false;
+   }
+
+   return true;
+}
+
 void plus_class::annotate_with_types()
 {
    cur_line = this->get_line_number();
    e1->annotate_with_types();
    e2->annotate_with_types();
-   if (e1->type != Int) {
-      semant_error("e1->type is not Int");
-      
-   }
-   if (e2->type != Int) {
-      semant_error("e2->type is not Int");
-   }
+   type_expect_check(e1->type, Int);
+   type_expect_check(e2->type, Int);
    this->type = Int;
 }
 
@@ -393,13 +444,8 @@ void sub_class::annotate_with_types()
    cur_line = this->get_line_number();
    e1->annotate_with_types();
    e2->annotate_with_types();
-   if (e1->type != Int) {
-      semant_error("e1->type is not Int");
-      
-   }
-   if (e2->type != Int) {
-      semant_error("e2->type is not Int");
-   }
+   type_expect_check(e1->type, Int);
+   type_expect_check(e2->type, Int);
    this->type = Int;
 }
 
@@ -408,13 +454,8 @@ void mul_class::annotate_with_types()
    cur_line = this->get_line_number();
    e1->annotate_with_types();
    e2->annotate_with_types();
-   if (e1->type != Int) {
-      semant_error("e1->type is not Int");
-      
-   }
-   if (e2->type != Int) {
-      semant_error("e2->type is not Int");
-   }
+   type_expect_check(e1->type, Int);
+   type_expect_check(e2->type, Int);
    this->type = Int;
 }
 
@@ -423,13 +464,8 @@ void divide_class::annotate_with_types()
    cur_line = this->get_line_number();
    e1->annotate_with_types();
    e2->annotate_with_types();
-   if (e1->type != Int) {
-      semant_error("e1->type is not Int");
-      
-   }
-   if (e2->type != Int) {
-      semant_error("e2->type is not Int");
-   }
+   type_expect_check(e1->type, Int);
+   type_expect_check(e2->type, Int);
    this->type = Int;
 }
 
