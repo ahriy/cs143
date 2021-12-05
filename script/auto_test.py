@@ -13,7 +13,8 @@ MYDIR = ""
 case_list = open(CASEFILE).readlines()
 golden_result = {}
 my_result = {}
-PA_mapping = {"PA2": "lexer", "PA3": "parser"}
+PA_mapping = {"PA2": "lexer", "PA3": "parser", "PA4": "semant"}
+
 def run_cmd(cmd, timeout=None):
     try:
         exec_status = -1
@@ -88,16 +89,12 @@ def mycmd(cmd):
         return result[1]
 
 def get_my(case, pa):
-    mycmd("cd {} && make clean && make -j && make {} -j".format(MYDIR, PA_mapping[pa]))
-    mycmd("cd {} && ./mycoolc {}".format(MYDIR, CASE_DIR + '/' + case + ".cl"))
-    my_result[case] = mycmd("spim {}".format(CASE_DIR + '/' + case + ".s"))
-    mycmd("rm {}".format(CASE_DIR + '/' + case + ".s"))
+    if (pa == "PA4"):
+        my_result[case] = mycmd("cd {} && ./lexer {} | ./parser $* | ./semant $*".format(MYDIR, CASE_DIR + '/' + case + ".cl")) 
 
 def get_golden(case, pa):
-    mycmd("coolc {}".format(CASE_DIR + '/' + case + ".cl"))
-    my_result[case] = mycmd("spim {}".format(CASE_DIR + '/' + case + ".s"))
-    golden_result[case] = mycmd("spim {}".format(CASE_DIR + '/' + case + ".s"))
-    mycmd("rm {}".format(CASE_DIR + '/' + case + ".s"))
+    if (pa == "PA4"):
+        golden_result[case] = mycmd("cd {} && ./lexer {} | ./parser $* | semant $*".format(MYDIR, CASE_DIR + '/' + case + ".cl")) 
 
 def clean_s():
     mycmd("cd {} && make clean".format(MYDIR))
@@ -117,18 +114,20 @@ if __name__ == "__main__":
     cmd = sys.argv[1]
     pa = sys.argv[2]
     MYDIR = ROOT + "/assignments/" + pa
+    clean_s()
+    result_file = open("result.txt", "+w")
 
-    if (cmd == "clean"):
-        clean_s()
-    elif (cmd == "run"):
-        clean_s()
+    mycmd("cd {} && make clean && make -j && make {} -j".format(MYDIR, PA_mapping[pa]))
+    if (cmd == "run"):
         for case in case_list:
+            if (not os.path.isfile(CASE_DIR + '/' + case + ".cl")):
+                continue
             get_golden(case, pa)
             get_my(case, pa)
-        for case in case_list:
             if (golden_result[case] != my_result[case]):
-                print("===== case {} result for golden is ===== \n{}".format(case, golden_result[case]))
-                print("===== case {} result for my is ===== \n{}".format(case, my_result[case]))
-                break
+                result_file.write("===== case {} result for golden is ===== \n{}".format(case, golden_result[case]))
+                result_file.write("===== case {} result for my is ===== \n{}".format(case, my_result[case]))
+                print("case {} FAIL".format(case))
             else:
                 print("case {} PASS".format(case))
+

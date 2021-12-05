@@ -1,0 +1,8665 @@
+===== case io result for golden is ===== 
+#49
+_program
+  #49
+  _class
+    A
+    Object
+    "/home/babycat/mylab/cs143/script/../examples/io.cl"
+    (
+    #53
+    _attr
+      io
+      IO
+      #53
+      _new
+        IO
+      : IO
+    #55
+    _method
+      out_a
+      Object
+      #55
+      _dispatch
+        #55
+        _object
+          io
+        : IO
+        out_string
+        (
+        #55
+        _string
+          "A: Hello world\n"
+        : String
+        )
+      : IO
+    )
+  #60
+  _class
+    B
+    A
+    "/home/babycat/mylab/cs143/script/../examples/io.cl"
+    (
+    #64
+    _method
+      out_b
+      Object
+      #64
+      _dispatch
+        #64
+        _object
+          io
+        : IO
+        out_string
+        (
+        #64
+        _string
+          "B: Hello world\n"
+        : String
+        )
+      : IO
+    )
+  #69
+  _class
+    C
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/io.cl"
+    (
+    #73
+    _method
+      out_c
+      Object
+      #73
+      _dispatch
+        #73
+        _object
+          self
+        : SELF_TYPE
+        out_string
+        (
+        #73
+        _string
+          "C: Hello world\n"
+        : String
+        )
+      : SELF_TYPE
+    )
+  #80
+  _class
+    D
+    C
+    "/home/babycat/mylab/cs143/script/../examples/io.cl"
+    (
+    #84
+    _method
+      out_d
+      Object
+      #84
+      _dispatch
+        #84
+        _object
+          self
+        : SELF_TYPE
+        out_string
+        (
+        #84
+        _string
+          "D: Hello world\n"
+        : String
+        )
+      : SELF_TYPE
+    )
+  #89
+  _class
+    Main
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/io.cl"
+    (
+    #93
+    _method
+      main
+      Object
+      #94
+      _block
+        #95
+        _dispatch
+          #95
+          _new
+            A
+          : A
+          out_a
+          (
+          )
+        : Object
+        #96
+        _dispatch
+          #96
+          _new
+            B
+          : B
+          out_b
+          (
+          )
+        : Object
+        #97
+        _dispatch
+          #97
+          _new
+            C
+          : C
+          out_c
+          (
+          )
+        : Object
+        #98
+        _dispatch
+          #98
+          _new
+            D
+          : D
+          out_d
+          (
+          )
+        : Object
+        #99
+        _dispatch
+          #99
+          _object
+            self
+          : SELF_TYPE
+          out_string
+          (
+          #99
+          _string
+            "Done.\n"
+          : String
+          )
+        : SELF_TYPE
+      : SELF_TYPE
+    )===== case io result for my is ===== 
+#49
+_program
+  #49
+  _class
+    A
+    Object
+    "/home/babycat/mylab/cs143/script/../examples/io.cl"
+    (
+    #53
+    _attr
+      io
+      IO
+      #53
+      _new
+        IO
+      : IO
+    #55
+    _method
+      out_a
+      Object
+      #55
+      _dispatch
+        #55
+        _object
+          io
+        : IO
+        out_string
+        (
+        #55
+        _string
+          "A: Hello world\n"
+        : String
+        )
+      : IO
+    )
+  #60
+  _class
+    B
+    A
+    "/home/babycat/mylab/cs143/script/../examples/io.cl"
+    (
+    #64
+    _method
+      out_b
+      Object
+      #64
+      _dispatch
+        #64
+        _object
+          io
+        : IO
+        out_string
+        (
+        #64
+        _string
+          "B: Hello world\n"
+        : String
+        )
+      : IO
+    )
+  #69
+  _class
+    C
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/io.cl"
+    (
+    #73
+    _method
+      out_c
+      Object
+      #73
+      _dispatch
+        #73
+        _object
+          self
+        : SELF_TYPE
+        out_string
+        (
+        #73
+        _string
+          "C: Hello world\n"
+        : String
+        )
+      : IO
+    )
+  #80
+  _class
+    D
+    C
+    "/home/babycat/mylab/cs143/script/../examples/io.cl"
+    (
+    #84
+    _method
+      out_d
+      Object
+      #84
+      _dispatch
+        #84
+        _object
+          self
+        : SELF_TYPE
+        out_string
+        (
+        #84
+        _string
+          "D: Hello world\n"
+        : String
+        )
+      : IO
+    )
+  #89
+  _class
+    Main
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/io.cl"
+    (
+    #93
+    _method
+      main
+      Object
+      #94
+      _block
+        #95
+        _dispatch
+          #95
+          _new
+            A
+          : A
+          out_a
+          (
+          )
+        : Object
+        #96
+        _dispatch
+          #96
+          _new
+            B
+          : B
+          out_b
+          (
+          )
+        : Object
+        #97
+        _dispatch
+          #97
+          _new
+            C
+          : C
+          out_c
+          (
+          )
+        : Object
+        #98
+        _dispatch
+          #98
+          _new
+            D
+          : D
+          out_d
+          (
+          )
+        : Object
+        #99
+        _dispatch
+          #99
+          _object
+            self
+          : SELF_TYPE
+          out_string
+          (
+          #99
+          _string
+            "Done.\n"
+          : String
+          )
+        : IO
+      : IO
+    )===== case hello_world result for golden is ===== 
+#1
+_program
+  #1
+  _class
+    Main
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/hello_world.cl"
+    (
+    #2
+    _method
+      main
+      SELF_TYPE
+      #3
+      _dispatch
+        #3
+        _object
+          self
+        : SELF_TYPE
+        out_string
+        (
+        #3
+        _string
+          "Hello, World.\n"
+        : String
+        )
+      : SELF_TYPE
+    )===== case hello_world result for my is ===== 
+[semant error /home/babycat/mylab/cs143/script/../examples/hello_world.cl:3] class is not comfort
+#1
+_program
+  #1
+  _class
+    Main
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/hello_world.cl"
+    (
+    #2
+    _method
+      main
+      SELF_TYPE
+      #3
+      _dispatch
+        #3
+        _object
+          self
+        : SELF_TYPE
+        out_string
+        (
+        #3
+        _string
+          "Hello, World.\n"
+        : String
+        )
+      : IO
+    )===== case book_list result for golden is ===== 
+#3
+_program
+  #3
+  _class
+    Book
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/book_list.cl"
+    (
+    #4
+    _attr
+      title
+      String
+      #0
+      _no_expr
+      : _no_type
+    #5
+    _attr
+      author
+      String
+      #0
+      _no_expr
+      : _no_type
+    #7
+    _method
+      initBook
+      #7
+      _formal
+        title_p
+        String
+      #7
+      _formal
+        author_p
+        String
+      Book
+      #8
+      _block
+        #9
+        _assign
+          title
+          #9
+          _object
+            title_p
+          : String
+        : String
+        #10
+        _assign
+          author
+          #10
+          _object
+            author_p
+          : String
+        : String
+        #11
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #15
+    _method
+      print
+      Book
+      #16
+      _block
+        #17
+        _dispatch
+          #17
+          _dispatch
+            #17
+            _dispatch
+              #17
+              _object
+                self
+              : SELF_TYPE
+              out_string
+              (
+              #17
+              _string
+                "title:      "
+              : String
+              )
+            : SELF_TYPE
+            out_string
+            (
+            #17
+            _object
+              title
+            : String
+            )
+          : SELF_TYPE
+          out_string
+          (
+          #17
+          _string
+            "\n"
+          : String
+          )
+        : SELF_TYPE
+        #18
+        _dispatch
+          #18
+          _dispatch
+            #18
+            _dispatch
+              #18
+              _object
+                self
+              : SELF_TYPE
+              out_string
+              (
+              #18
+              _string
+                "author:     "
+              : String
+              )
+            : SELF_TYPE
+            out_string
+            (
+            #18
+            _object
+              author
+            : String
+            )
+          : SELF_TYPE
+          out_string
+          (
+          #18
+          _string
+            "\n"
+          : String
+          )
+        : SELF_TYPE
+        #19
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    )
+  #24
+  _class
+    Article
+    Book
+    "/home/babycat/mylab/cs143/script/../examples/book_list.cl"
+    (
+    #25
+    _attr
+      per_title
+      String
+      #0
+      _no_expr
+      : _no_type
+    #27
+    _method
+      initArticle
+      #27
+      _formal
+        title_p
+        String
+      #27
+      _formal
+        author_p
+        String
+      #28
+      _formal
+        per_title_p
+        String
+      Article
+      #29
+      _block
+        #30
+        _dispatch
+          #30
+          _object
+            self
+          : SELF_TYPE
+          initBook
+          (
+          #30
+          _object
+            title_p
+          : String
+          #30
+          _object
+            author_p
+          : String
+          )
+        : Book
+        #31
+        _assign
+          per_title
+          #31
+          _object
+            per_title_p
+          : String
+        : String
+        #32
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #36
+    _method
+      print
+      Book
+      #37
+      _block
+        #38
+        _static_dispatch
+          #38
+          _object
+            self
+          : SELF_TYPE
+          Book
+          print
+          (
+          )
+        : Book
+        #39
+        _dispatch
+          #39
+          _dispatch
+            #39
+            _dispatch
+              #39
+              _object
+                self
+              : SELF_TYPE
+              out_string
+              (
+              #39
+              _string
+                "periodical:  "
+              : String
+              )
+            : SELF_TYPE
+            out_string
+            (
+            #39
+            _object
+              per_title
+            : String
+            )
+          : SELF_TYPE
+          out_string
+          (
+          #39
+          _string
+            "\n"
+          : String
+          )
+        : SELF_TYPE
+        #40
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    )
+  #45
+  _class
+    BookList
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/book_list.cl"
+    (
+    #50
+    _method
+      isNil
+      Bool
+      #50
+      _block
+        #50
+        _dispatch
+          #50
+          _object
+            self
+          : SELF_TYPE
+          abort
+          (
+          )
+        : Object
+        #50
+        _bool
+          1
+        : Bool
+      : Bool
+    #52
+    _method
+      cons
+      #52
+      _formal
+        hd
+        Book
+      Cons
+      #53
+      _let
+        new_cell
+        Cons
+        #53
+        _new
+          Cons
+        : Cons
+        #54
+        _dispatch
+          #54
+          _object
+            new_cell
+          : Cons
+          init
+          (
+          #54
+          _object
+            hd
+          : Book
+          #54
+          _object
+            self
+          : SELF_TYPE
+          )
+        : Cons
+      : Cons
+    #62
+    _method
+      car
+      Book
+      #62
+      _block
+        #62
+        _dispatch
+          #62
+          _object
+            self
+          : SELF_TYPE
+          abort
+          (
+          )
+        : Object
+        #62
+        _new
+          Book
+        : Book
+      : Book
+    #68
+    _method
+      cdr
+      BookList
+      #68
+      _block
+        #68
+        _dispatch
+          #68
+          _object
+            self
+          : SELF_TYPE
+          abort
+          (
+          )
+        : Object
+        #68
+        _new
+          BookList
+        : BookList
+      : BookList
+    #70
+    _method
+      print_list
+      Object
+      #70
+      _dispatch
+        #70
+        _object
+          self
+        : SELF_TYPE
+        abort
+        (
+        )
+      : Object
+    )
+  #73
+  _class
+    Cons
+    BookList
+    "/home/babycat/mylab/cs143/script/../examples/book_list.cl"
+    (
+    #74
+    _attr
+      xcar
+      Book
+      #0
+      _no_expr
+      : _no_type
+    #75
+    _attr
+      xcdr
+      BookList
+      #0
+      _no_expr
+      : _no_type
+    #79
+    _method
+      isNil
+      Bool
+      #79
+      _bool
+        0
+      : Bool
+    #81
+    _method
+      init
+      #81
+      _formal
+        hd
+        Book
+      #81
+      _formal
+        tl
+        BookList
+      Cons
+      #82
+      _block
+        #83
+        _assign
+          xcar
+          #83
+          _object
+            hd
+          : Book
+        : Book
+        #84
+        _assign
+          xcdr
+          #84
+          _object
+            tl
+          : BookList
+        : BookList
+        #85
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #89
+    _method
+      car
+      Book
+      #89
+      _object
+        xcar
+      : Book
+    #91
+    _method
+      cdr
+      BookList
+      #91
+      _object
+        xcdr
+      : BookList
+    #93
+    _method
+      print_list
+      Object
+      #94
+      _block
+        #95
+        _typcase
+          #95
+          _dispatch
+            #95
+            _object
+              xcar
+            : Book
+            print
+            (
+            )
+          : Book
+          #96
+          _branch
+            dummy
+            Book
+            #96
+            _dispatch
+              #96
+              _object
+                self
+              : SELF_TYPE
+              out_string
+              (
+              #96
+              _string
+                "- dynamic type was Book -\n"
+              : String
+              )
+            : SELF_TYPE
+          #97
+          _branch
+            dummy
+            Article
+            #97
+            _dispatch
+              #97
+              _object
+                self
+              : SELF_TYPE
+              out_string
+              (
+              #97
+              _string
+                "- dynamic type was Article -\n"
+              : String
+              )
+            : SELF_TYPE
+        : SELF_TYPE
+        #99
+        _dispatch
+          #99
+          _object
+            xcdr
+          : BookList
+          print_list
+          (
+          )
+        : Object
+      : Object
+    )
+  #104
+  _class
+    Nil
+    BookList
+    "/home/babycat/mylab/cs143/script/../examples/book_list.cl"
+    (
+    #105
+    _method
+      isNil
+      Bool
+      #105
+      _bool
+        1
+      : Bool
+    #107
+    _method
+      print_list
+      Object
+      #107
+      _bool
+        1
+      : Bool
+    )
+  #111
+  _class
+    Main
+    Object
+    "/home/babycat/mylab/cs143/script/../examples/book_list.cl"
+    (
+    #113
+    _attr
+      books
+      BookList
+      #0
+      _no_expr
+      : _no_type
+    #115
+    _method
+      main
+      Object
+      #116
+      _let
+        a_book
+        Book
+        #117
+        _dispatch
+          #117
+          _new
+            Book
+          : Book
+          initBook
+          (
+          #117
+          _string
+            "Compilers, Principles, Techniques, and Tools"
+          : String
+          #118
+          _string
+            "Aho, Sethi, and Ullman"
+          : String
+          )
+        : Book
+        #120
+        _let
+          an_article
+          Article
+          #121
+          _dispatch
+            #121
+            _new
+              Article
+            : Article
+            initArticle
+            (
+            #121
+            _string
+              "The Top 100 CD_ROMs"
+            : String
+            #122
+            _string
+              "Ulanoff"
+            : String
+            #123
+            _string
+              "PC Magazine"
+            : String
+            )
+          : Article
+          #125
+          _block
+            #126
+            _assign
+              books
+              #126
+              _dispatch
+                #126
+                _dispatch
+                  #126
+                  _new
+                    Nil
+                  : Nil
+                  cons
+                  (
+                  #126
+                  _object
+                    a_book
+                  : Book
+                  )
+                : Cons
+                cons
+                (
+                #126
+                _object
+                  an_article
+                : Article
+                )
+              : Cons
+            : Cons
+            #127
+            _dispatch
+              #127
+              _object
+                books
+              : BookList
+              print_list
+              (
+              )
+            : Object
+          : Object
+        : Object
+      : Object
+    )===== case book_list result for my is ===== 
+#3
+_program
+  #3
+  _class
+    Book
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/book_list.cl"
+    (
+    #4
+    _attr
+      title
+      String
+      #0
+      _no_expr
+      : _no_type
+    #5
+    _attr
+      author
+      String
+      #0
+      _no_expr
+      : _no_type
+    #7
+    _method
+      initBook
+      #7
+      _formal
+        title_p
+        String
+      #7
+      _formal
+        author_p
+        String
+      Book
+      #8
+      _block
+        #9
+        _assign
+          title
+          #9
+          _object
+            title_p
+          : String
+        : String
+        #10
+        _assign
+          author
+          #10
+          _object
+            author_p
+          : String
+        : String
+        #11
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #15
+    _method
+      print
+      Book
+      #16
+      _block
+        #17
+        _dispatch
+          #17
+          _dispatch
+            #17
+            _dispatch
+              #17
+              _object
+                self
+              : SELF_TYPE
+              out_string
+              (
+              #17
+              _string
+                "title:      "
+              : String
+              )
+            : IO
+            out_string
+            (
+            #17
+            _object
+              title
+            : String
+            )
+          : IO
+          out_string
+          (
+          #17
+          _string
+            "\n"
+          : String
+          )
+        : IO
+        #18
+        _dispatch
+          #18
+          _dispatch
+            #18
+            _dispatch
+              #18
+              _object
+                self
+              : SELF_TYPE
+              out_string
+              (
+              #18
+              _string
+                "author:     "
+              : String
+              )
+            : IO
+            out_string
+            (
+            #18
+            _object
+              author
+            : String
+            )
+          : IO
+          out_string
+          (
+          #18
+          _string
+            "\n"
+          : String
+          )
+        : IO
+        #19
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    )
+  #24
+  _class
+    Article
+    Book
+    "/home/babycat/mylab/cs143/script/../examples/book_list.cl"
+    (
+    #25
+    _attr
+      per_title
+      String
+      #0
+      _no_expr
+      : _no_type
+    #27
+    _method
+      initArticle
+      #27
+      _formal
+        title_p
+        String
+      #27
+      _formal
+        author_p
+        String
+      #28
+      _formal
+        per_title_p
+        String
+      Article
+      #29
+      _block
+        #30
+        _dispatch
+          #30
+          _object
+            self
+          : SELF_TYPE
+          initBook
+          (
+          #30
+          _object
+            title_p
+          : String
+          #30
+          _object
+            author_p
+          : String
+          )
+        : Book
+        #31
+        _assign
+          per_title
+          #31
+          _object
+            per_title_p
+          : String
+        : String
+        #32
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #36
+    _method
+      print
+      Book
+      #37
+      _block
+        #38
+        _static_dispatch
+          #38
+          _object
+            self
+          : SELF_TYPE
+          Book
+          print
+          (
+          )
+        : Book
+        #39
+        _dispatch
+          #39
+          _dispatch
+            #39
+            _dispatch
+              #39
+              _object
+                self
+              : SELF_TYPE
+              out_string
+              (
+              #39
+              _string
+                "periodical:  "
+              : String
+              )
+            : IO
+            out_string
+            (
+            #39
+            _object
+              per_title
+            : String
+            )
+          : IO
+          out_string
+          (
+          #39
+          _string
+            "\n"
+          : String
+          )
+        : IO
+        #40
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    )
+  #45
+  _class
+    BookList
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/book_list.cl"
+    (
+    #50
+    _method
+      isNil
+      Bool
+      #50
+      _block
+        #50
+        _dispatch
+          #50
+          _object
+            self
+          : SELF_TYPE
+          abort
+          (
+          )
+        : Object
+        #50
+        _bool
+          1
+        : Bool
+      : Bool
+    #52
+    _method
+      cons
+      #52
+      _formal
+        hd
+        Book
+      Cons
+      #53
+      _let
+        new_cell
+        Cons
+        #53
+        _new
+          Cons
+        : Cons
+        #54
+        _dispatch
+          #54
+          _object
+            new_cell
+          : Cons
+          init
+          (
+          #54
+          _object
+            hd
+          : Book
+          #54
+          _object
+            self
+          : SELF_TYPE
+          )
+        : Cons
+      : Cons
+    #62
+    _method
+      car
+      Book
+      #62
+      _block
+        #62
+        _dispatch
+          #62
+          _object
+            self
+          : SELF_TYPE
+          abort
+          (
+          )
+        : Object
+        #62
+        _new
+          Book
+        : Book
+      : Book
+    #68
+    _method
+      cdr
+      BookList
+      #68
+      _block
+        #68
+        _dispatch
+          #68
+          _object
+            self
+          : SELF_TYPE
+          abort
+          (
+          )
+        : Object
+        #68
+        _new
+          BookList
+        : BookList
+      : BookList
+    #70
+    _method
+      print_list
+      Object
+      #70
+      _dispatch
+        #70
+        _object
+          self
+        : SELF_TYPE
+        abort
+        (
+        )
+      : Object
+    )
+  #73
+  _class
+    Cons
+    BookList
+    "/home/babycat/mylab/cs143/script/../examples/book_list.cl"
+    (
+    #74
+    _attr
+      xcar
+      Book
+      #0
+      _no_expr
+      : _no_type
+    #75
+    _attr
+      xcdr
+      BookList
+      #0
+      _no_expr
+      : _no_type
+    #79
+    _method
+      isNil
+      Bool
+      #79
+      _bool
+        0
+      : Bool
+    #81
+    _method
+      init
+      #81
+      _formal
+        hd
+        Book
+      #81
+      _formal
+        tl
+        BookList
+      Cons
+      #82
+      _block
+        #83
+        _assign
+          xcar
+          #83
+          _object
+            hd
+          : Book
+        : Book
+        #84
+        _assign
+          xcdr
+          #84
+          _object
+            tl
+          : BookList
+        : BookList
+        #85
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #89
+    _method
+      car
+      Book
+      #89
+      _object
+        xcar
+      : Book
+    #91
+    _method
+      cdr
+      BookList
+      #91
+      _object
+        xcdr
+      : BookList
+    #93
+    _method
+      print_list
+      Object
+      #94
+      _block
+        #95
+        _typcase
+          #95
+          _dispatch
+            #95
+            _object
+              xcar
+            : Book
+            print
+            (
+            )
+          : Book
+          #96
+          _branch
+            dummy
+            Book
+            #96
+            _dispatch
+              #96
+              _object
+                self
+              : SELF_TYPE
+              out_string
+              (
+              #96
+              _string
+                "- dynamic type was Book -\n"
+              : String
+              )
+            : IO
+          #97
+          _branch
+            dummy
+            Article
+            #97
+            _dispatch
+              #97
+              _object
+                self
+              : SELF_TYPE
+              out_string
+              (
+              #97
+              _string
+                "- dynamic type was Article -\n"
+              : String
+              )
+            : IO
+        : IO
+        #99
+        _dispatch
+          #99
+          _object
+            xcdr
+          : BookList
+          print_list
+          (
+          )
+        : Object
+      : Object
+    )
+  #104
+  _class
+    Nil
+    BookList
+    "/home/babycat/mylab/cs143/script/../examples/book_list.cl"
+    (
+    #105
+    _method
+      isNil
+      Bool
+      #105
+      _bool
+        1
+      : Bool
+    #107
+    _method
+      print_list
+      Object
+      #107
+      _bool
+        1
+      : Bool
+    )
+  #111
+  _class
+    Main
+    Object
+    "/home/babycat/mylab/cs143/script/../examples/book_list.cl"
+    (
+    #113
+    _attr
+      books
+      BookList
+      #0
+      _no_expr
+      : _no_type
+    #115
+    _method
+      main
+      Object
+      #116
+      _let
+        a_book
+        Book
+        #117
+        _dispatch
+          #117
+          _new
+            Book
+          : Book
+          initBook
+          (
+          #117
+          _string
+            "Compilers, Principles, Techniques, and Tools"
+          : String
+          #118
+          _string
+            "Aho, Sethi, and Ullman"
+          : String
+          )
+        : Book
+        #120
+        _let
+          an_article
+          Article
+          #121
+          _dispatch
+            #121
+            _new
+              Article
+            : Article
+            initArticle
+            (
+            #121
+            _string
+              "The Top 100 CD_ROMs"
+            : String
+            #122
+            _string
+              "Ulanoff"
+            : String
+            #123
+            _string
+              "PC Magazine"
+            : String
+            )
+          : Article
+          #125
+          _block
+            #126
+            _assign
+              books
+              #126
+              _dispatch
+                #126
+                _dispatch
+                  #126
+                  _new
+                    Nil
+                  : Nil
+                  cons
+                  (
+                  #126
+                  _object
+                    a_book
+                  : Book
+                  )
+                : Cons
+                cons
+                (
+                #126
+                _object
+                  an_article
+                : Article
+                )
+              : Cons
+            : Cons
+            #127
+            _dispatch
+              #127
+              _object
+                books
+              : BookList
+              print_list
+              (
+              )
+            : Object
+          : Object
+        : Object
+      : Object
+    )===== case cells result for golden is ===== 
+#5
+_program
+  #5
+  _class
+    CellularAutomaton
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/cells.cl"
+    (
+    #6
+    _attr
+      population_map
+      String
+      #0
+      _no_expr
+      : _no_type
+    #8
+    _method
+      init
+      #8
+      _formal
+        map
+        String
+      SELF_TYPE
+      #9
+      _block
+        #10
+        _assign
+          population_map
+          #10
+          _object
+            map
+          : String
+        : String
+        #11
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #15
+    _method
+      print
+      SELF_TYPE
+      #16
+      _block
+        #17
+        _dispatch
+          #17
+          _object
+            self
+          : SELF_TYPE
+          out_string
+          (
+          #17
+          _dispatch
+            #17
+            _object
+              population_map
+            : String
+            concat
+            (
+            #17
+            _string
+              "\n"
+            : String
+            )
+          : String
+          )
+        : SELF_TYPE
+        #18
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #22
+    _method
+      num_cells
+      Int
+      #23
+      _dispatch
+        #23
+        _object
+          population_map
+        : String
+        length
+        (
+        )
+      : Int
+    #26
+    _method
+      cell
+      #26
+      _formal
+        position
+        Int
+      String
+      #27
+      _dispatch
+        #27
+        _object
+          population_map
+        : String
+        substr
+        (
+        #27
+        _object
+          position
+        : Int
+        #27
+        _int
+          1
+        : Int
+        )
+      : String
+    #30
+    _method
+      cell_left_neighbor
+      #30
+      _formal
+        position
+        Int
+      String
+      #31
+      _cond
+        #31
+        _eq
+          #31
+          _object
+            position
+          : Int
+          #31
+          _int
+            0
+          : Int
+        : Bool
+        #32
+        _dispatch
+          #32
+          _object
+            self
+          : SELF_TYPE
+          cell
+          (
+          #32
+          _sub
+            #32
+            _dispatch
+              #32
+              _object
+                self
+              : SELF_TYPE
+              num_cells
+              (
+              )
+            : Int
+            #32
+            _int
+              1
+            : Int
+          : Int
+          )
+        : String
+        #34
+        _dispatch
+          #34
+          _object
+            self
+          : SELF_TYPE
+          cell
+          (
+          #34
+          _sub
+            #34
+            _object
+              position
+            : Int
+            #34
+            _int
+              1
+            : Int
+          : Int
+          )
+        : String
+      : String
+    #38
+    _method
+      cell_right_neighbor
+      #38
+      _formal
+        position
+        Int
+      String
+      #39
+      _cond
+        #39
+        _eq
+          #39
+          _object
+            position
+          : Int
+          #39
+          _sub
+            #39
+            _dispatch
+              #39
+              _object
+                self
+              : SELF_TYPE
+              num_cells
+              (
+              )
+            : Int
+            #39
+            _int
+              1
+            : Int
+          : Int
+        : Bool
+        #40
+        _dispatch
+          #40
+          _object
+            self
+          : SELF_TYPE
+          cell
+          (
+          #40
+          _int
+            0
+          : Int
+          )
+        : String
+        #42
+        _dispatch
+          #42
+          _object
+            self
+          : SELF_TYPE
+          cell
+          (
+          #42
+          _plus
+            #42
+            _object
+              position
+            : Int
+            #42
+            _int
+              1
+            : Int
+          : Int
+          )
+        : String
+      : String
+    #48
+    _method
+      cell_at_next_evolution
+      #48
+      _formal
+        position
+        Int
+      String
+      #49
+      _cond
+        #52
+        _eq
+          #51
+          _plus
+            #50
+            _plus
+              #49
+              _cond
+                #49
+                _eq
+                  #49
+                  _dispatch
+                    #49
+                    _object
+                      self
+                    : SELF_TYPE
+                    cell
+                    (
+                    #49
+                    _object
+                      position
+                    : Int
+                    )
+                  : String
+                  #49
+                  _string
+                    "X"
+                  : String
+                : Bool
+                #49
+                _int
+                  1
+                : Int
+                #49
+                _int
+                  0
+                : Int
+              : Int
+              #50
+              _cond
+                #50
+                _eq
+                  #50
+                  _dispatch
+                    #50
+                    _object
+                      self
+                    : SELF_TYPE
+                    cell_left_neighbor
+                    (
+                    #50
+                    _object
+                      position
+                    : Int
+                    )
+                  : String
+                  #50
+                  _string
+                    "X"
+                  : String
+                : Bool
+                #50
+                _int
+                  1
+                : Int
+                #50
+                _int
+                  0
+                : Int
+              : Int
+            : Int
+            #51
+            _cond
+              #51
+              _eq
+                #51
+                _dispatch
+                  #51
+                  _object
+                    self
+                  : SELF_TYPE
+                  cell_right_neighbor
+                  (
+                  #51
+                  _object
+                    position
+                  : Int
+                  )
+                : String
+                #51
+                _string
+                  "X"
+                : String
+              : Bool
+              #51
+              _int
+                1
+              : Int
+              #51
+              _int
+                0
+              : Int
+            : Int
+          : Int
+          #52
+          _int
+            1
+          : Int
+        : Bool
+        #54
+        _string
+          "X"
+        : String
+        #56
+        _string
+          "."
+        : String
+      : String
+    #60
+    _method
+      evolve
+      SELF_TYPE
+      #61
+      _let
+        position
+        Int
+        #0
+        _no_expr
+        : _no_type
+        #62
+        _let
+          num
+          Int
+          #62
+          _dispatch
+            #62
+            _object
+              self
+            : SELF_TYPE
+            num_cells
+            (
+            )
+          : Int
+          #63
+          _let
+            temp
+            String
+            #0
+            _no_expr
+            : _no_type
+            #64
+            _block
+              #65
+              _loop
+                #65
+                _lt
+                  #65
+                  _object
+                    position
+                  : Int
+                  #65
+                  _object
+                    num
+                  : Int
+                : Bool
+                #66
+                _block
+                  #67
+                  _assign
+                    temp
+                    #67
+                    _dispatch
+                      #67
+                      _object
+                        temp
+                      : String
+                      concat
+                      (
+                      #67
+                      _dispatch
+                        #67
+                        _object
+                          self
+                        : SELF_TYPE
+                        cell_at_next_evolution
+                        (
+                        #67
+                        _object
+                          position
+                        : Int
+                        )
+                      : String
+                      )
+                    : String
+                  : String
+                  #68
+                  _assign
+                    position
+                    #68
+                    _plus
+                      #68
+                      _object
+                        position
+                      : Int
+                      #68
+                      _int
+                        1
+                      : Int
+                    : Int
+                  : Int
+                : Int
+              : Object
+              #71
+              _assign
+                population_map
+                #71
+                _object
+                  temp
+                : String
+              : String
+              #72
+              _object
+                self
+              : SELF_TYPE
+            : SELF_TYPE
+          : SELF_TYPE
+        : SELF_TYPE
+      : SELF_TYPE
+    )
+  #78
+  _class
+    Main
+    Object
+    "/home/babycat/mylab/cs143/script/../examples/cells.cl"
+    (
+    #79
+    _attr
+      cells
+      CellularAutomaton
+      #0
+      _no_expr
+      : _no_type
+    #81
+    _method
+      main
+      SELF_TYPE
+      #82
+      _block
+        #83
+        _assign
+          cells
+          #83
+          _dispatch
+            #83
+            _new
+              CellularAutomaton
+            : CellularAutomaton
+            init
+            (
+            #83
+            _string
+              "         X         "
+            : String
+            )
+          : CellularAutomaton
+        : CellularAutomaton
+        #84
+        _dispatch
+          #84
+          _object
+            cells
+          : CellularAutomaton
+          print
+          (
+          )
+        : CellularAutomaton
+        #85
+        _let
+          countdown
+          Int
+          #85
+          _int
+            20
+          : Int
+          #86
+          _loop
+            #86
+            _lt
+              #86
+              _int
+                0
+              : Int
+              #86
+              _object
+                countdown
+              : Int
+            : Bool
+            #87
+            _block
+              #88
+              _dispatch
+                #88
+                _object
+                  cells
+                : CellularAutomaton
+                evolve
+                (
+                )
+              : CellularAutomaton
+              #89
+              _dispatch
+                #89
+                _object
+                  cells
+                : CellularAutomaton
+                print
+                (
+                )
+              : CellularAutomaton
+              #90
+              _assign
+                countdown
+                #90
+                _sub
+                  #90
+                  _object
+                    countdown
+                  : Int
+                  #90
+                  _int
+                    1
+                  : Int
+                : Int
+              : Int
+            : Int
+          : Object
+        : Object
+        #94
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    )===== case cells result for my is ===== 
+cond noted String /home/babycat/mylab/cs143/script/../examples/cells.cl:31 
+cond noted String /home/babycat/mylab/cs143/script/../examples/cells.cl:39 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/cells.cl:49 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/cells.cl:50 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/cells.cl:51 
+cond noted String /home/babycat/mylab/cs143/script/../examples/cells.cl:49 
+[semant error /home/babycat/mylab/cs143/script/../examples/cells.cl:83] assign_class is not comfort for expr->type SELF_TYPE and v->type CellularAutomaton
+#5
+_program
+  #5
+  _class
+    CellularAutomaton
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/cells.cl"
+    (
+    #6
+    _attr
+      population_map
+      String
+      #0
+      _no_expr
+      : _no_type
+    #8
+    _method
+      init
+      #8
+      _formal
+        map
+        String
+      SELF_TYPE
+      #9
+      _block
+        #10
+        _assign
+          population_map
+          #10
+          _object
+            map
+          : String
+        : String
+        #11
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #15
+    _method
+      print
+      SELF_TYPE
+      #16
+      _block
+        #17
+        _dispatch
+          #17
+          _object
+            self
+          : SELF_TYPE
+          out_string
+          (
+          #17
+          _dispatch
+            #17
+            _object
+              population_map
+            : String
+            concat
+            (
+            #17
+            _string
+              "\n"
+            : String
+            )
+          : String
+          )
+        : IO
+        #18
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #22
+    _method
+      num_cells
+      Int
+      #23
+      _dispatch
+        #23
+        _object
+          population_map
+        : String
+        length
+        (
+        )
+      : Int
+    #26
+    _method
+      cell
+      #26
+      _formal
+        position
+        Int
+      String
+      #27
+      _dispatch
+        #27
+        _object
+          population_map
+        : String
+        substr
+        (
+        #27
+        _object
+          position
+        : Int
+        #27
+        _int
+          1
+        : Int
+        )
+      : String
+    #30
+    _method
+      cell_left_neighbor
+      #30
+      _formal
+        position
+        Int
+      String
+      #31
+      _cond
+        #31
+        _eq
+          #31
+          _object
+            position
+          : Int
+          #31
+          _int
+            0
+          : Int
+        : Bool
+        #32
+        _dispatch
+          #32
+          _object
+            self
+          : SELF_TYPE
+          cell
+          (
+          #32
+          _sub
+            #32
+            _dispatch
+              #32
+              _object
+                self
+              : SELF_TYPE
+              num_cells
+              (
+              )
+            : Int
+            #32
+            _int
+              1
+            : Int
+          : Int
+          )
+        : String
+        #34
+        _dispatch
+          #34
+          _object
+            self
+          : SELF_TYPE
+          cell
+          (
+          #34
+          _sub
+            #34
+            _object
+              position
+            : Int
+            #34
+            _int
+              1
+            : Int
+          : Int
+          )
+        : String
+      : String
+    #38
+    _method
+      cell_right_neighbor
+      #38
+      _formal
+        position
+        Int
+      String
+      #39
+      _cond
+        #39
+        _eq
+          #39
+          _object
+            position
+          : Int
+          #39
+          _sub
+            #39
+            _dispatch
+              #39
+              _object
+                self
+              : SELF_TYPE
+              num_cells
+              (
+              )
+            : Int
+            #39
+            _int
+              1
+            : Int
+          : Int
+        : Bool
+        #40
+        _dispatch
+          #40
+          _object
+            self
+          : SELF_TYPE
+          cell
+          (
+          #40
+          _int
+            0
+          : Int
+          )
+        : String
+        #42
+        _dispatch
+          #42
+          _object
+            self
+          : SELF_TYPE
+          cell
+          (
+          #42
+          _plus
+            #42
+            _object
+              position
+            : Int
+            #42
+            _int
+              1
+            : Int
+          : Int
+          )
+        : String
+      : String
+    #48
+    _method
+      cell_at_next_evolution
+      #48
+      _formal
+        position
+        Int
+      String
+      #49
+      _cond
+        #52
+        _eq
+          #51
+          _plus
+            #50
+            _plus
+              #49
+              _cond
+                #49
+                _eq
+                  #49
+                  _dispatch
+                    #49
+                    _object
+                      self
+                    : SELF_TYPE
+                    cell
+                    (
+                    #49
+                    _object
+                      position
+                    : Int
+                    )
+                  : String
+                  #49
+                  _string
+                    "X"
+                  : String
+                : Bool
+                #49
+                _int
+                  1
+                : Int
+                #49
+                _int
+                  0
+                : Int
+              : Int
+              #50
+              _cond
+                #50
+                _eq
+                  #50
+                  _dispatch
+                    #50
+                    _object
+                      self
+                    : SELF_TYPE
+                    cell_left_neighbor
+                    (
+                    #50
+                    _object
+                      position
+                    : Int
+                    )
+                  : String
+                  #50
+                  _string
+                    "X"
+                  : String
+                : Bool
+                #50
+                _int
+                  1
+                : Int
+                #50
+                _int
+                  0
+                : Int
+              : Int
+            : Int
+            #51
+            _cond
+              #51
+              _eq
+                #51
+                _dispatch
+                  #51
+                  _object
+                    self
+                  : SELF_TYPE
+                  cell_right_neighbor
+                  (
+                  #51
+                  _object
+                    position
+                  : Int
+                  )
+                : String
+                #51
+                _string
+                  "X"
+                : String
+              : Bool
+              #51
+              _int
+                1
+              : Int
+              #51
+              _int
+                0
+              : Int
+            : Int
+          : Int
+          #52
+          _int
+            1
+          : Int
+        : Bool
+        #54
+        _string
+          "X"
+        : String
+        #56
+        _string
+          "."
+        : String
+      : String
+    #60
+    _method
+      evolve
+      SELF_TYPE
+      #61
+      _let
+        position
+        Int
+        #0
+        _no_expr
+        : _no_type
+        #62
+        _let
+          num
+          Int
+          #62
+          _dispatch
+            #62
+            _object
+              self
+            : SELF_TYPE
+            num_cells
+            (
+            )
+          : Int
+          #63
+          _let
+            temp
+            String
+            #0
+            _no_expr
+            : _no_type
+            #64
+            _block
+              #65
+              _loop
+                #65
+                _lt
+                  #65
+                  _object
+                    position
+                  : Int
+                  #65
+                  _object
+                    num
+                  : Int
+                : Bool
+                #66
+                _block
+                  #67
+                  _assign
+                    temp
+                    #67
+                    _dispatch
+                      #67
+                      _object
+                        temp
+                      : String
+                      concat
+                      (
+                      #67
+                      _dispatch
+                        #67
+                        _object
+                          self
+                        : SELF_TYPE
+                        cell_at_next_evolution
+                        (
+                        #67
+                        _object
+                          position
+                        : Int
+                        )
+                      : String
+                      )
+                    : String
+                  : String
+                  #68
+                  _assign
+                    position
+                    #68
+                    _plus
+                      #68
+                      _object
+                        position
+                      : Int
+                      #68
+                      _int
+                        1
+                      : Int
+                    : Int
+                  : Int
+                : Int
+              : Object
+              #71
+              _assign
+                population_map
+                #71
+                _object
+                  temp
+                : String
+              : String
+              #72
+              _object
+                self
+              : SELF_TYPE
+            : SELF_TYPE
+          : SELF_TYPE
+        : SELF_TYPE
+      : SELF_TYPE
+    )
+  #78
+  _class
+    Main
+    Object
+    "/home/babycat/mylab/cs143/script/../examples/cells.cl"
+    (
+    #79
+    _attr
+      cells
+      CellularAutomaton
+      #0
+      _no_expr
+      : _no_type
+    #81
+    _method
+      main
+      SELF_TYPE
+      #82
+      _block
+        #83
+        _assign
+          cells
+          #83
+          _dispatch
+            #83
+            _new
+              CellularAutomaton
+            : CellularAutomaton
+            init
+            (
+            #83
+            _string
+              "         X         "
+            : String
+            )
+          : SELF_TYPE
+        : SELF_TYPE
+        #84
+        _dispatch
+          #84
+          _object
+            cells
+          : CellularAutomaton
+          print
+          (
+          )
+        : SELF_TYPE
+        #85
+        _let
+          countdown
+          Int
+          #85
+          _int
+            20
+          : Int
+          #86
+          _loop
+            #86
+            _lt
+              #86
+              _int
+                0
+              : Int
+              #86
+              _object
+                countdown
+              : Int
+            : Bool
+            #87
+            _block
+              #88
+              _dispatch
+                #88
+                _object
+                  cells
+                : CellularAutomaton
+                evolve
+                (
+                )
+              : SELF_TYPE
+              #89
+              _dispatch
+                #89
+                _object
+                  cells
+                : CellularAutomaton
+                print
+                (
+                )
+              : SELF_TYPE
+              #90
+              _assign
+                countdown
+                #90
+                _sub
+                  #90
+                  _object
+                    countdown
+                  : Int
+                  #90
+                  _int
+                    1
+                  : Int
+                : Int
+              : Int
+            : Int
+          : Object
+        : Object
+        #94
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    )===== case complex result for golden is ===== 
+#1
+_program
+  #1
+  _class
+    Main
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/complex.cl"
+    (
+    #2
+    _method
+      main
+      SELF_TYPE
+      #3
+      _let
+        c
+        Complex
+        #3
+        _dispatch
+          #3
+          _new
+            Complex
+          : Complex
+          init
+          (
+          #3
+          _int
+            1
+          : Int
+          #3
+          _int
+            1
+          : Int
+          )
+        : Complex
+        #4
+        _cond
+          #4
+          _eq
+            #4
+            _dispatch
+              #4
+              _dispatch
+                #4
+                _object
+                  c
+                : Complex
+                reflect_X
+                (
+                )
+              : Complex
+              reflect_Y
+              (
+              )
+            : Complex
+            #4
+            _dispatch
+              #4
+              _object
+                c
+              : Complex
+              reflect_0
+              (
+              )
+            : Complex
+          : Bool
+          #5
+          _dispatch
+            #5
+            _object
+              self
+            : SELF_TYPE
+            out_string
+            (
+            #5
+            _string
+              "=)\n"
+            : String
+            )
+          : SELF_TYPE
+          #6
+          _dispatch
+            #6
+            _object
+              self
+            : SELF_TYPE
+            out_string
+            (
+            #6
+            _string
+              "=(\n"
+            : String
+            )
+          : SELF_TYPE
+        : SELF_TYPE
+      : SELF_TYPE
+    )
+  #12
+  _class
+    Complex
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/complex.cl"
+    (
+    #13
+    _attr
+      x
+      Int
+      #0
+      _no_expr
+      : _no_type
+    #14
+    _attr
+      y
+      Int
+      #0
+      _no_expr
+      : _no_type
+    #16
+    _method
+      init
+      #16
+      _formal
+        a
+        Int
+      #16
+      _formal
+        b
+        Int
+      Complex
+      #17
+      _block
+        #18
+        _eq
+          #18
+          _object
+            x
+          : Int
+          #18
+          _object
+            a
+          : Int
+        : Bool
+        #19
+        _eq
+          #19
+          _object
+            y
+          : Int
+          #19
+          _object
+            b
+          : Int
+        : Bool
+        #20
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #24
+    _method
+      print
+      Object
+      #25
+      _cond
+        #25
+        _eq
+          #25
+          _object
+            y
+          : Int
+          #25
+          _int
+            0
+          : Int
+        : Bool
+        #26
+        _dispatch
+          #26
+          _object
+            self
+          : SELF_TYPE
+          out_int
+          (
+          #26
+          _object
+            x
+          : Int
+          )
+        : SELF_TYPE
+        #27
+        _dispatch
+          #27
+          _dispatch
+            #27
+            _dispatch
+              #27
+              _dispatch
+                #27
+                _object
+                  self
+                : SELF_TYPE
+                out_int
+                (
+                #27
+                _object
+                  x
+                : Int
+                )
+              : SELF_TYPE
+              out_string
+              (
+              #27
+              _string
+                "+"
+              : String
+              )
+            : SELF_TYPE
+            out_int
+            (
+            #27
+            _object
+              y
+            : Int
+            )
+          : SELF_TYPE
+          out_string
+          (
+          #27
+          _string
+            "I"
+          : String
+          )
+        : SELF_TYPE
+      : SELF_TYPE
+    #31
+    _method
+      reflect_0
+      Complex
+      #32
+      _block
+        #33
+        _eq
+          #33
+          _object
+            x
+          : Int
+          #33
+          _neg
+            #33
+            _object
+              x
+            : Int
+          : Int
+        : Bool
+        #34
+        _eq
+          #34
+          _object
+            y
+          : Int
+          #34
+          _neg
+            #34
+            _object
+              y
+            : Int
+          : Int
+        : Bool
+        #35
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #39
+    _method
+      reflect_X
+      Complex
+      #40
+      _block
+        #41
+        _eq
+          #41
+          _object
+            y
+          : Int
+          #41
+          _neg
+            #41
+            _object
+              y
+            : Int
+          : Int
+        : Bool
+        #42
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #46
+    _method
+      reflect_Y
+      Complex
+      #47
+      _block
+        #48
+        _eq
+          #48
+          _object
+            x
+          : Int
+          #48
+          _neg
+            #48
+            _object
+              x
+            : Int
+          : Int
+        : Bool
+        #49
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    )===== case complex result for my is ===== 
+cond noted IO /home/babycat/mylab/cs143/script/../examples/complex.cl:4 
+[semant error /home/babycat/mylab/cs143/script/../examples/complex.cl:6] class is not comfort
+cond noted IO /home/babycat/mylab/cs143/script/../examples/complex.cl:25 
+#1
+_program
+  #1
+  _class
+    Main
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/complex.cl"
+    (
+    #2
+    _method
+      main
+      SELF_TYPE
+      #3
+      _let
+        c
+        Complex
+        #3
+        _dispatch
+          #3
+          _new
+            Complex
+          : Complex
+          init
+          (
+          #3
+          _int
+            1
+          : Int
+          #3
+          _int
+            1
+          : Int
+          )
+        : Complex
+        #4
+        _cond
+          #4
+          _eq
+            #4
+            _dispatch
+              #4
+              _dispatch
+                #4
+                _object
+                  c
+                : Complex
+                reflect_X
+                (
+                )
+              : Complex
+              reflect_Y
+              (
+              )
+            : Complex
+            #4
+            _dispatch
+              #4
+              _object
+                c
+              : Complex
+              reflect_0
+              (
+              )
+            : Complex
+          : Bool
+          #5
+          _dispatch
+            #5
+            _object
+              self
+            : SELF_TYPE
+            out_string
+            (
+            #5
+            _string
+              "=)\n"
+            : String
+            )
+          : IO
+          #6
+          _dispatch
+            #6
+            _object
+              self
+            : SELF_TYPE
+            out_string
+            (
+            #6
+            _string
+              "=(\n"
+            : String
+            )
+          : IO
+        : IO
+      : IO
+    )
+  #12
+  _class
+    Complex
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/complex.cl"
+    (
+    #13
+    _attr
+      x
+      Int
+      #0
+      _no_expr
+      : _no_type
+    #14
+    _attr
+      y
+      Int
+      #0
+      _no_expr
+      : _no_type
+    #16
+    _method
+      init
+      #16
+      _formal
+        a
+        Int
+      #16
+      _formal
+        b
+        Int
+      Complex
+      #17
+      _block
+        #18
+        _eq
+          #18
+          _object
+            x
+          : Int
+          #18
+          _object
+            a
+          : Int
+        : Bool
+        #19
+        _eq
+          #19
+          _object
+            y
+          : Int
+          #19
+          _object
+            b
+          : Int
+        : Bool
+        #20
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #24
+    _method
+      print
+      Object
+      #25
+      _cond
+        #25
+        _eq
+          #25
+          _object
+            y
+          : Int
+          #25
+          _int
+            0
+          : Int
+        : Bool
+        #26
+        _dispatch
+          #26
+          _object
+            self
+          : SELF_TYPE
+          out_int
+          (
+          #26
+          _object
+            x
+          : Int
+          )
+        : IO
+        #27
+        _dispatch
+          #27
+          _dispatch
+            #27
+            _dispatch
+              #27
+              _dispatch
+                #27
+                _object
+                  self
+                : SELF_TYPE
+                out_int
+                (
+                #27
+                _object
+                  x
+                : Int
+                )
+              : IO
+              out_string
+              (
+              #27
+              _string
+                "+"
+              : String
+              )
+            : IO
+            out_int
+            (
+            #27
+            _object
+              y
+            : Int
+            )
+          : IO
+          out_string
+          (
+          #27
+          _string
+            "I"
+          : String
+          )
+        : IO
+      : IO
+    #31
+    _method
+      reflect_0
+      Complex
+      #32
+      _block
+        #33
+        _eq
+          #33
+          _object
+            x
+          : Int
+          #33
+          _neg
+            #33
+            _object
+              x
+            : Int
+          : Int
+        : Bool
+        #34
+        _eq
+          #34
+          _object
+            y
+          : Int
+          #34
+          _neg
+            #34
+            _object
+              y
+            : Int
+          : Int
+        : Bool
+        #35
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #39
+    _method
+      reflect_X
+      Complex
+      #40
+      _block
+        #41
+        _eq
+          #41
+          _object
+            y
+          : Int
+          #41
+          _neg
+            #41
+            _object
+              y
+            : Int
+          : Int
+        : Bool
+        #42
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #46
+    _method
+      reflect_Y
+      Complex
+      #47
+      _block
+        #48
+        _eq
+          #48
+          _object
+            x
+          : Int
+          #48
+          _neg
+            #48
+            _object
+              x
+            : Int
+          : Int
+        : Bool
+        #49
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    )===== case cool result for golden is ===== 
+#1
+_program
+  #1
+  _class
+    Main
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/cool.cl"
+    (
+    #2
+    _method
+      main
+      SELF_TYPE
+      #3
+      _block
+        #4
+        _dispatch
+          #4
+          _dispatch
+            #4
+            _object
+              self
+            : SELF_TYPE
+            out_string
+            (
+            #4
+            _dispatch
+              #4
+              _dispatch
+                #4
+                _new
+                  Object
+                : Object
+                type_name
+                (
+                )
+              : String
+              substr
+              (
+              #4
+              _int
+                4
+              : Int
+              #4
+              _int
+                1
+              : Int
+              )
+            : String
+            )
+          : SELF_TYPE
+          out_string
+          (
+          #5
+          _dispatch
+            #5
+            _dispatch
+              #5
+              _isvoid
+                #5
+                _object
+                  self
+                : SELF_TYPE
+              : Bool
+              type_name
+              (
+              )
+            : String
+            substr
+            (
+            #5
+            _int
+              1
+            : Int
+            #5
+            _int
+              3
+            : Int
+            )
+          : String
+          )
+        : SELF_TYPE
+        #6
+        _dispatch
+          #6
+          _object
+            self
+          : SELF_TYPE
+          out_string
+          (
+          #6
+          _string
+            "\n"
+          : String
+          )
+        : SELF_TYPE
+      : SELF_TYPE
+    )===== case cool result for my is ===== 
+[semant error /home/babycat/mylab/cs143/script/../examples/cool.cl:6] class is not comfort
+#1
+_program
+  #1
+  _class
+    Main
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/cool.cl"
+    (
+    #2
+    _method
+      main
+      SELF_TYPE
+      #3
+      _block
+        #4
+        _dispatch
+          #4
+          _dispatch
+            #4
+            _object
+              self
+            : SELF_TYPE
+            out_string
+            (
+            #4
+            _dispatch
+              #4
+              _dispatch
+                #4
+                _new
+                  Object
+                : Object
+                type_name
+                (
+                )
+              : String
+              substr
+              (
+              #4
+              _int
+                4
+              : Int
+              #4
+              _int
+                1
+              : Int
+              )
+            : String
+            )
+          : IO
+          out_string
+          (
+          #5
+          _dispatch
+            #5
+            _dispatch
+              #5
+              _isvoid
+                #5
+                _object
+                  self
+                : SELF_TYPE
+              : Bool
+              type_name
+              (
+              )
+            : String
+            substr
+            (
+            #5
+            _int
+              1
+            : Int
+            #5
+            _int
+              3
+            : Int
+            )
+          : String
+          )
+        : IO
+        #6
+        _dispatch
+          #6
+          _object
+            self
+          : SELF_TYPE
+          out_string
+          (
+          #6
+          _string
+            "\n"
+          : String
+          )
+        : IO
+      : IO
+    )===== case graph result for golden is ===== 
+#38
+_program
+  #38
+  _class
+    Graph
+    Object
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #40
+    _attr
+      vertices
+      VList
+      #40
+      _new
+        VList
+      : VList
+    #41
+    _attr
+      edges
+      EList
+      #41
+      _new
+        EList
+      : EList
+    #43
+    _method
+      add_vertice
+      #43
+      _formal
+        v
+        Vertice
+      Object
+      #43
+      _block
+        #44
+        _assign
+          edges
+          #44
+          _dispatch
+            #44
+            _dispatch
+              #44
+              _object
+                v
+              : Vertice
+              outgoing
+              (
+              )
+            : EList
+            append
+            (
+            #44
+            _object
+              edges
+            : EList
+            )
+          : EList
+        : EList
+        #45
+        _assign
+          vertices
+          #45
+          _dispatch
+            #45
+            _object
+              vertices
+            : VList
+            cons
+            (
+            #45
+            _object
+              v
+            : Vertice
+            )
+          : VList
+        : VList
+      : VList
+    #48
+    _method
+      print_E
+      Object
+      #48
+      _dispatch
+        #48
+        _object
+          edges
+        : EList
+        print
+        (
+        )
+      : Object
+    #49
+    _method
+      print_V
+      Object
+      #49
+      _dispatch
+        #49
+        _object
+          vertices
+        : VList
+        print
+        (
+        )
+      : Object
+    )
+  #53
+  _class
+    Vertice
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #55
+    _attr
+      num
+      Int
+      #0
+      _no_expr
+      : _no_type
+    #56
+    _attr
+      out
+      EList
+      #56
+      _new
+        EList
+      : EList
+    #58
+    _method
+      outgoing
+      EList
+      #58
+      _object
+        out
+      : EList
+    #60
+    _method
+      number
+      Int
+      #60
+      _object
+        num
+      : Int
+    #62
+    _method
+      init
+      #62
+      _formal
+        n
+        Int
+      SELF_TYPE
+      #63
+      _block
+        #64
+        _assign
+          num
+          #64
+          _object
+            n
+          : Int
+        : Int
+        #65
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #70
+    _method
+      add_out
+      #70
+      _formal
+        s
+        Edge
+      SELF_TYPE
+      #71
+      _block
+        #72
+        _assign
+          out
+          #72
+          _dispatch
+            #72
+            _object
+              out
+            : EList
+            cons
+            (
+            #72
+            _object
+              s
+            : Edge
+            )
+          : EList
+        : EList
+        #73
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #77
+    _method
+      print
+      Object
+      #78
+      _block
+        #79
+        _dispatch
+          #79
+          _object
+            self
+          : SELF_TYPE
+          out_int
+          (
+          #79
+          _object
+            num
+          : Int
+          )
+        : SELF_TYPE
+        #80
+        _dispatch
+          #80
+          _object
+            out
+          : EList
+          print
+          (
+          )
+        : Object
+      : Object
+    )
+  #86
+  _class
+    Edge
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #88
+    _attr
+      from
+      Int
+      #0
+      _no_expr
+      : _no_type
+    #89
+    _attr
+      to
+      Int
+      #0
+      _no_expr
+      : _no_type
+    #90
+    _attr
+      weight
+      Int
+      #0
+      _no_expr
+      : _no_type
+    #92
+    _method
+      init
+      #92
+      _formal
+        f
+        Int
+      #92
+      _formal
+        t
+        Int
+      #92
+      _formal
+        w
+        Int
+      SELF_TYPE
+      #93
+      _block
+        #94
+        _assign
+          from
+          #94
+          _object
+            f
+          : Int
+        : Int
+        #95
+        _assign
+          to
+          #95
+          _object
+            t
+          : Int
+        : Int
+        #96
+        _assign
+          weight
+          #96
+          _object
+            w
+          : Int
+        : Int
+        #97
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #101
+    _method
+      print
+      Object
+      #102
+      _block
+        #103
+        _dispatch
+          #103
+          _object
+            self
+          : SELF_TYPE
+          out_string
+          (
+          #103
+          _string
+            " ("
+          : String
+          )
+        : SELF_TYPE
+        #104
+        _dispatch
+          #104
+          _object
+            self
+          : SELF_TYPE
+          out_int
+          (
+          #104
+          _object
+            from
+          : Int
+          )
+        : SELF_TYPE
+        #105
+        _dispatch
+          #105
+          _object
+            self
+          : SELF_TYPE
+          out_string
+          (
+          #105
+          _string
+            ","
+          : String
+          )
+        : SELF_TYPE
+        #106
+        _dispatch
+          #106
+          _object
+            self
+          : SELF_TYPE
+          out_int
+          (
+          #106
+          _object
+            to
+          : Int
+          )
+        : SELF_TYPE
+        #107
+        _dispatch
+          #107
+          _object
+            self
+          : SELF_TYPE
+          out_string
+          (
+          #107
+          _string
+            ")"
+          : String
+          )
+        : SELF_TYPE
+        #108
+        _dispatch
+          #108
+          _object
+            self
+          : SELF_TYPE
+          out_int
+          (
+          #108
+          _object
+            weight
+          : Int
+          )
+        : SELF_TYPE
+      : SELF_TYPE
+    )
+  #116
+  _class
+    EList
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #119
+    _attr
+      car
+      Edge
+      #0
+      _no_expr
+      : _no_type
+    #121
+    _method
+      isNil
+      Bool
+      #121
+      _bool
+        1
+      : Bool
+    #123
+    _method
+      head
+      Edge
+      #123
+      _block
+        #123
+        _dispatch
+          #123
+          _object
+            self
+          : SELF_TYPE
+          abort
+          (
+          )
+        : Object
+        #123
+        _object
+          car
+        : Edge
+      : Edge
+    #125
+    _method
+      tail
+      EList
+      #125
+      _block
+        #125
+        _dispatch
+          #125
+          _object
+            self
+          : SELF_TYPE
+          abort
+          (
+          )
+        : Object
+        #125
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #134
+    _method
+      cons
+      #134
+      _formal
+        e
+        Edge
+      EList
+      #135
+      _dispatch
+        #135
+        _new
+          ECons
+        : ECons
+        init
+        (
+        #135
+        _object
+          e
+        : Edge
+        #135
+        _object
+          self
+        : SELF_TYPE
+        )
+      : EList
+    #138
+    _method
+      append
+      #138
+      _formal
+        l
+        EList
+      EList
+      #139
+      _cond
+        #139
+        _dispatch
+          #139
+          _object
+            self
+          : SELF_TYPE
+          isNil
+          (
+          )
+        : Bool
+        #139
+        _object
+          l
+        : EList
+        #140
+        _dispatch
+          #140
+          _dispatch
+            #140
+            _dispatch
+              #140
+              _object
+                self
+              : SELF_TYPE
+              tail
+              (
+              )
+            : EList
+            append
+            (
+            #140
+            _object
+              l
+            : EList
+            )
+          : EList
+          cons
+          (
+          #140
+          _dispatch
+            #140
+            _object
+              self
+            : SELF_TYPE
+            head
+            (
+            )
+          : Edge
+          )
+        : EList
+      : EList
+    #144
+    _method
+      print
+      Object
+      #145
+      _dispatch
+        #145
+        _object
+          self
+        : SELF_TYPE
+        out_string
+        (
+        #145
+        _string
+          "\n"
+        : String
+        )
+      : SELF_TYPE
+    )
+  #164
+  _class
+    ECons
+    EList
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #166
+    _attr
+      cdr
+      EList
+      #0
+      _no_expr
+      : _no_type
+    #168
+    _method
+      isNil
+      Bool
+      #168
+      _bool
+        0
+      : Bool
+    #170
+    _method
+      head
+      Edge
+      #170
+      _object
+        car
+      : Edge
+    #172
+    _method
+      tail
+      EList
+      #172
+      _object
+        cdr
+      : EList
+    #174
+    _method
+      init
+      #174
+      _formal
+        e
+        Edge
+      #174
+      _formal
+        rest
+        EList
+      EList
+      #175
+      _block
+        #176
+        _assign
+          car
+          #176
+          _object
+            e
+          : Edge
+        : Edge
+        #177
+        _assign
+          cdr
+          #177
+          _object
+            rest
+          : EList
+        : EList
+        #178
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #182
+    _method
+      print
+      Object
+      #183
+      _block
+        #184
+        _dispatch
+          #184
+          _object
+            car
+          : Edge
+          print
+          (
+          )
+        : Object
+        #185
+        _dispatch
+          #185
+          _object
+            cdr
+          : EList
+          print
+          (
+          )
+        : Object
+      : Object
+    )
+  #194
+  _class
+    VList
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #197
+    _attr
+      car
+      Vertice
+      #0
+      _no_expr
+      : _no_type
+    #199
+    _method
+      isNil
+      Bool
+      #199
+      _bool
+        1
+      : Bool
+    #201
+    _method
+      head
+      Vertice
+      #201
+      _block
+        #201
+        _dispatch
+          #201
+          _object
+            self
+          : SELF_TYPE
+          abort
+          (
+          )
+        : Object
+        #201
+        _object
+          car
+        : Vertice
+      : Vertice
+    #203
+    _method
+      tail
+      VList
+      #203
+      _block
+        #203
+        _dispatch
+          #203
+          _object
+            self
+          : SELF_TYPE
+          abort
+          (
+          )
+        : Object
+        #203
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #212
+    _method
+      cons
+      #212
+      _formal
+        v
+        Vertice
+      VList
+      #213
+      _dispatch
+        #213
+        _new
+          VCons
+        : VCons
+        init
+        (
+        #213
+        _object
+          v
+        : Vertice
+        #213
+        _object
+          self
+        : SELF_TYPE
+        )
+      : VList
+    #216
+    _method
+      print
+      Object
+      #216
+      _dispatch
+        #216
+        _object
+          self
+        : SELF_TYPE
+        out_string
+        (
+        #216
+        _string
+          "\n"
+        : String
+        )
+      : SELF_TYPE
+    )
+  #221
+  _class
+    VCons
+    VList
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #223
+    _attr
+      cdr
+      VList
+      #0
+      _no_expr
+      : _no_type
+    #225
+    _method
+      isNil
+      Bool
+      #225
+      _bool
+        0
+      : Bool
+    #227
+    _method
+      head
+      Vertice
+      #227
+      _object
+        car
+      : Vertice
+    #229
+    _method
+      tail
+      VList
+      #229
+      _object
+        cdr
+      : VList
+    #231
+    _method
+      init
+      #231
+      _formal
+        v
+        Vertice
+      #231
+      _formal
+        rest
+        VList
+      VList
+      #232
+      _block
+        #233
+        _assign
+          car
+          #233
+          _object
+            v
+          : Vertice
+        : Vertice
+        #234
+        _assign
+          cdr
+          #234
+          _object
+            rest
+          : VList
+        : VList
+        #235
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #239
+    _method
+      print
+      Object
+      #240
+      _block
+        #241
+        _dispatch
+          #241
+          _object
+            car
+          : Vertice
+          print
+          (
+          )
+        : Object
+        #242
+        _dispatch
+          #242
+          _object
+            cdr
+          : VList
+          print
+          (
+          )
+        : Object
+      : Object
+    )
+  #249
+  _class
+    Parse
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #252
+    _attr
+      boolop
+      BoolOp
+      #252
+      _new
+        BoolOp
+      : BoolOp
+    #256
+    _method
+      read_input
+      Graph
+      #258
+      _let
+        g
+        Graph
+        #258
+        _new
+          Graph
+        : Graph
+        #258
+        _block
+          #259
+          _let
+            line
+            String
+            #259
+            _dispatch
+              #259
+              _object
+                self
+              : SELF_TYPE
+              in_string
+              (
+              )
+            : String
+            #260
+            _loop
+              #260
+              _dispatch
+                #260
+                _object
+                  boolop
+                : BoolOp
+                and
+                (
+                #260
+                _comp
+                  #260
+                  _eq
+                    #260
+                    _object
+                      line
+                    : String
+                    #260
+                    _string
+                      "\n"
+                    : String
+                  : Bool
+                : Bool
+                #260
+                _comp
+                  #260
+                  _eq
+                    #260
+                    _object
+                      line
+                    : String
+                    #260
+                    _string
+                      ""
+                    : String
+                  : Bool
+                : Bool
+                )
+              : Bool
+              #260
+              _block
+                #263
+                _dispatch
+                  #263
+                  _object
+                    g
+                  : Graph
+                  add_vertice
+                  (
+                  #263
+                  _dispatch
+                    #263
+                    _object
+                      self
+                    : SELF_TYPE
+                    parse_line
+                    (
+                    #263
+                    _object
+                      line
+                    : String
+                    )
+                  : Vertice
+                  )
+                : Object
+                #264
+                _assign
+                  line
+                  #264
+                  _dispatch
+                    #264
+                    _object
+                      self
+                    : SELF_TYPE
+                    in_string
+                    (
+                    )
+                  : String
+                : String
+              : String
+            : Object
+          : Object
+          #267
+          _object
+            g
+          : Graph
+        : Graph
+      : Graph
+    #272
+    _method
+      parse_line
+      #272
+      _formal
+        s
+        String
+      Vertice
+      #273
+      _let
+        v
+        Vertice
+        #273
+        _dispatch
+          #273
+          _new
+            Vertice
+          : Vertice
+          init
+          (
+          #273
+          _dispatch
+            #273
+            _object
+              self
+            : SELF_TYPE
+            a2i
+            (
+            #273
+            _object
+              s
+            : String
+            )
+          : Int
+          )
+        : Vertice
+        #273
+        _block
+          #274
+          _loop
+            #274
+            _comp
+              #274
+              _eq
+                #274
+                _dispatch
+                  #274
+                  _object
+                    rest
+                  : String
+                  length
+                  (
+                  )
+                : Int
+                #274
+                _int
+                  0
+                : Int
+              : Bool
+            : Bool
+            #274
+            _block
+              #277
+              _let
+                succ
+                Int
+                #277
+                _dispatch
+                  #277
+                  _object
+                    self
+                  : SELF_TYPE
+                  a2i
+                  (
+                  #277
+                  _object
+                    rest
+                  : String
+                  )
+                : Int
+                #278
+                _let
+                  weight
+                  Int
+                  #278
+                  _dispatch
+                    #278
+                    _object
+                      self
+                    : SELF_TYPE
+                    a2i
+                    (
+                    #278
+                    _object
+                      rest
+                    : String
+                    )
+                  : Int
+                  #280
+                  _dispatch
+                    #280
+                    _object
+                      v
+                    : Vertice
+                    add_out
+                    (
+                    #280
+                    _dispatch
+                      #280
+                      _new
+                        Edge
+                      : Edge
+                      init
+                      (
+                      #280
+                      _dispatch
+                        #280
+                        _object
+                          v
+                        : Vertice
+                        number
+                        (
+                        )
+                      : Int
+                      #281
+                      _object
+                        succ
+                      : Int
+                      #282
+                      _object
+                        weight
+                      : Int
+                      )
+                    : Edge
+                    )
+                  : Vertice
+                : Vertice
+              : Vertice
+            : Vertice
+          : Object
+          #285
+          _object
+            v
+          : Vertice
+        : Vertice
+      : Vertice
+    #290
+    _method
+      c2i
+      #290
+      _formal
+        char
+        String
+      Int
+      #291
+      _cond
+        #291
+        _eq
+          #291
+          _object
+            char
+          : String
+          #291
+          _string
+            "0"
+          : String
+        : Bool
+        #291
+        _int
+          0
+        : Int
+        #292
+        _cond
+          #292
+          _eq
+            #292
+            _object
+              char
+            : String
+            #292
+            _string
+              "1"
+            : String
+          : Bool
+          #292
+          _int
+            1
+          : Int
+          #293
+          _cond
+            #293
+            _eq
+              #293
+              _object
+                char
+              : String
+              #293
+              _string
+                "2"
+              : String
+            : Bool
+            #293
+            _int
+              2
+            : Int
+            #294
+            _cond
+              #294
+              _eq
+                #294
+                _object
+                  char
+                : String
+                #294
+                _string
+                  "3"
+                : String
+              : Bool
+              #294
+              _int
+                3
+              : Int
+              #295
+              _cond
+                #295
+                _eq
+                  #295
+                  _object
+                    char
+                  : String
+                  #295
+                  _string
+                    "4"
+                  : String
+                : Bool
+                #295
+                _int
+                  4
+                : Int
+                #296
+                _cond
+                  #296
+                  _eq
+                    #296
+                    _object
+                      char
+                    : String
+                    #296
+                    _string
+                      "5"
+                    : String
+                  : Bool
+                  #296
+                  _int
+                    5
+                  : Int
+                  #297
+                  _cond
+                    #297
+                    _eq
+                      #297
+                      _object
+                        char
+                      : String
+                      #297
+                      _string
+                        "6"
+                      : String
+                    : Bool
+                    #297
+                    _int
+                      6
+                    : Int
+                    #298
+                    _cond
+                      #298
+                      _eq
+                        #298
+                        _object
+                          char
+                        : String
+                        #298
+                        _string
+                          "7"
+                        : String
+                      : Bool
+                      #298
+                      _int
+                        7
+                      : Int
+                      #299
+                      _cond
+                        #299
+                        _eq
+                          #299
+                          _object
+                            char
+                          : String
+                          #299
+                          _string
+                            "8"
+                          : String
+                        : Bool
+                        #299
+                        _int
+                          8
+                        : Int
+                        #300
+                        _cond
+                          #300
+                          _eq
+                            #300
+                            _object
+                              char
+                            : String
+                            #300
+                            _string
+                              "9"
+                            : String
+                          : Bool
+                          #300
+                          _int
+                            9
+                          : Int
+                          #301
+                          _block
+                            #301
+                            _dispatch
+                              #301
+                              _object
+                                self
+                              : SELF_TYPE
+                              abort
+                              (
+                              )
+                            : Object
+                            #301
+                            _int
+                              0
+                            : Int
+                          : Int
+                        : Int
+                      : Int
+                    : Int
+                  : Int
+                : Int
+              : Int
+            : Int
+          : Int
+        : Int
+      : Int
+    #305
+    _attr
+      rest
+      String
+      #0
+      _no_expr
+      : _no_type
+    #307
+    _method
+      a2i
+      #307
+      _formal
+        s
+        String
+      Int
+      #308
+      _cond
+        #308
+        _eq
+          #308
+          _dispatch
+            #308
+            _object
+              s
+            : String
+            length
+            (
+            )
+          : Int
+          #308
+          _int
+            0
+          : Int
+        : Bool
+        #308
+        _int
+          0
+        : Int
+        #309
+        _cond
+          #309
+          _eq
+            #309
+            _dispatch
+              #309
+              _object
+                s
+              : String
+              substr
+              (
+              #309
+              _int
+                0
+              : Int
+              #309
+              _int
+                1
+              : Int
+              )
+            : String
+            #309
+            _string
+              "-"
+            : String
+          : Bool
+          #309
+          _neg
+            #309
+            _dispatch
+              #309
+              _object
+                self
+              : SELF_TYPE
+              a2i_aux
+              (
+              #309
+              _dispatch
+                #309
+                _object
+                  s
+                : String
+                substr
+                (
+                #309
+                _int
+                  1
+                : Int
+                #309
+                _sub
+                  #309
+                  _dispatch
+                    #309
+                    _object
+                      s
+                    : String
+                    length
+                    (
+                    )
+                  : Int
+                  #309
+                  _int
+                    1
+                  : Int
+                : Int
+                )
+              : String
+              )
+            : Int
+          : Int
+          #310
+          _cond
+            #310
+            _eq
+              #310
+              _dispatch
+                #310
+                _object
+                  s
+                : String
+                substr
+                (
+                #310
+                _int
+                  0
+                : Int
+                #310
+                _int
+                  1
+                : Int
+                )
+              : String
+              #310
+              _string
+                " "
+              : String
+            : Bool
+            #310
+            _dispatch
+              #310
+              _object
+                self
+              : SELF_TYPE
+              a2i
+              (
+              #310
+              _dispatch
+                #310
+                _object
+                  s
+                : String
+                substr
+                (
+                #310
+                _int
+                  1
+                : Int
+                #310
+                _sub
+                  #310
+                  _dispatch
+                    #310
+                    _object
+                      s
+                    : String
+                    length
+                    (
+                    )
+                  : Int
+                  #310
+                  _int
+                    1
+                  : Int
+                : Int
+                )
+              : String
+              )
+            : Int
+            #311
+            _dispatch
+              #311
+              _object
+                self
+              : SELF_TYPE
+              a2i_aux
+              (
+              #311
+              _object
+                s
+              : String
+              )
+            : Int
+          : Int
+        : Int
+      : Int
+    #321
+    _method
+      a2i_aux
+      #321
+      _formal
+        s
+        String
+      Int
+      #322
+      _let
+        int
+        Int
+        #322
+        _int
+          0
+        : Int
+        #323
+        _block
+          #324
+          _let
+            j
+            Int
+            #324
+            _dispatch
+              #324
+              _object
+                s
+              : String
+              length
+              (
+              )
+            : Int
+            #325
+            _let
+              i
+              Int
+              #325
+              _int
+                0
+              : Int
+              #326
+              _loop
+                #326
+                _lt
+                  #326
+                  _object
+                    i
+                  : Int
+                  #326
+                  _object
+                    j
+                  : Int
+                : Bool
+                #327
+                _let
+                  c
+                  String
+                  #327
+                  _dispatch
+                    #327
+                    _object
+                      s
+                    : String
+                    substr
+                    (
+                    #327
+                    _object
+                      i
+                    : Int
+                    #327
+                    _int
+                      1
+                    : Int
+                    )
+                  : String
+                  #328
+                  _cond
+                    #328
+                    _eq
+                      #328
+                      _object
+                        c
+                      : String
+                      #328
+                      _string
+                        " "
+                      : String
+                    : Bool
+                    #329
+                    _block
+                      #330
+                      _assign
+                        rest
+                        #330
+                        _dispatch
+                          #330
+                          _object
+                            s
+                          : String
+                          substr
+                          (
+                          #330
+                          _plus
+                            #330
+                            _object
+                              i
+                            : Int
+                            #330
+                            _int
+                              1
+                            : Int
+                          : Int
+                          #330
+                          _sub
+                            #330
+                            _sub
+                              #330
+                              _dispatch
+                                #330
+                                _object
+                                  s
+                                : String
+                                length
+                                (
+                                )
+                              : Int
+                              #330
+                              _object
+                                i
+                              : Int
+                            : Int
+                            #330
+                            _int
+                              1
+                            : Int
+                          : Int
+                          )
+                        : String
+                      : String
+                      #331
+                      _assign
+                        i
+                        #331
+                        _object
+                          j
+                        : Int
+                      : Int
+                    : Int
+                    #333
+                    _cond
+                      #333
+                      _eq
+                        #333
+                        _object
+                          c
+                        : String
+                        #333
+                        _string
+                          ","
+                        : String
+                      : Bool
+                      #334
+                      _block
+                        #335
+                        _assign
+                          rest
+                          #335
+                          _dispatch
+                            #335
+                            _object
+                              s
+                            : String
+                            substr
+                            (
+                            #335
+                            _plus
+                              #335
+                              _object
+                                i
+                              : Int
+                              #335
+                              _int
+                                1
+                              : Int
+                            : Int
+                            #335
+                            _sub
+                              #335
+                              _sub
+                                #335
+                                _dispatch
+                                  #335
+                                  _object
+                                    s
+                                  : String
+                                  length
+                                  (
+                                  )
+                                : Int
+                                #335
+                                _object
+                                  i
+                                : Int
+                              : Int
+                              #335
+                              _int
+                                1
+                              : Int
+                            : Int
+                            )
+                          : String
+                        : String
+                        #336
+                        _assign
+                          i
+                          #336
+                          _object
+                            j
+                          : Int
+                        : Int
+                      : Int
+                      #339
+                      _block
+                        #340
+                        _assign
+                          int
+                          #340
+                          _plus
+                            #340
+                            _mul
+                              #340
+                              _object
+                                int
+                              : Int
+                              #340
+                              _int
+                                10
+                              : Int
+                            : Int
+                            #340
+                            _dispatch
+                              #340
+                              _object
+                                self
+                              : SELF_TYPE
+                              c2i
+                              (
+                              #340
+                              _dispatch
+                                #340
+                                _object
+                                  s
+                                : String
+                                substr
+                                (
+                                #340
+                                _object
+                                  i
+                                : Int
+                                #340
+                                _int
+                                  1
+                                : Int
+                                )
+                              : String
+                              )
+                            : Int
+                          : Int
+                        : Int
+                        #341
+                        _assign
+                          i
+                          #341
+                          _plus
+                            #341
+                            _object
+                              i
+                            : Int
+                            #341
+                            _int
+                              1
+                            : Int
+                          : Int
+                        : Int
+                        #342
+                        _cond
+                          #342
+                          _eq
+                            #342
+                            _object
+                              i
+                            : Int
+                            #342
+                            _object
+                              j
+                            : Int
+                          : Bool
+                          #342
+                          _assign
+                            rest
+                            #342
+                            _string
+                              ""
+                            : String
+                          : String
+                          #342
+                          _string
+                            ""
+                          : String
+                        : String
+                      : String
+                    : Object
+                  : Object
+                : Object
+              : Object
+            : Object
+          : Object
+          #349
+          _object
+            int
+          : Int
+        : Int
+      : Int
+    )
+  #357
+  _class
+    Main
+    Parse
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #359
+    _attr
+      g
+      Graph
+      #359
+      _dispatch
+        #359
+        _object
+          self
+        : SELF_TYPE
+        read_input
+        (
+        )
+      : Graph
+    #361
+    _method
+      main
+      Object
+      #362
+      _block
+        #363
+        _dispatch
+          #363
+          _object
+            g
+          : Graph
+          print_V
+          (
+          )
+        : Object
+        #364
+        _dispatch
+          #364
+          _object
+            g
+          : Graph
+          print_E
+          (
+          )
+        : Object
+      : Object
+    )
+  #370
+  _class
+    BoolOp
+    Object
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #372
+    _method
+      and
+      #372
+      _formal
+        b1
+        Bool
+      #372
+      _formal
+        b2
+        Bool
+      Bool
+      #373
+      _cond
+        #373
+        _object
+          b1
+        : Bool
+        #373
+        _object
+          b2
+        : Bool
+        #373
+        _bool
+          0
+        : Bool
+      : Bool
+    #377
+    _method
+      or
+      #377
+      _formal
+        b1
+        Bool
+      #377
+      _formal
+        b2
+        Bool
+      Bool
+      #378
+      _cond
+        #378
+        _object
+          b1
+        : Bool
+        #378
+        _bool
+          1
+        : Bool
+        #378
+        _object
+          b2
+        : Bool
+      : Bool
+    )===== case graph result for my is ===== 
+cond noted EList /home/babycat/mylab/cs143/script/../examples/graph.cl:139 
+[semant error /home/babycat/mylab/cs143/script/../examples/graph.cl:274] variable rest not declared before use in object_class
+[semant error /home/babycat/mylab/cs143/script/../examples/graph.cl:274] method Object:length not declared before use in dispatch_class
+[semant error /home/babycat/mylab/cs143/script/../examples/graph.cl:277] variable rest not declared before use in object_class
+[semant error /home/babycat/mylab/cs143/script/../examples/graph.cl:278] variable rest not declared before use in object_class
+[semant error /home/babycat/mylab/cs143/script/../examples/graph.cl:282] pred is not Bool
+cond noted Int /home/babycat/mylab/cs143/script/../examples/graph.cl:300 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/graph.cl:299 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/graph.cl:298 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/graph.cl:297 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/graph.cl:296 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/graph.cl:295 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/graph.cl:294 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/graph.cl:293 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/graph.cl:292 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/graph.cl:291 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/graph.cl:310 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/graph.cl:309 
+cond noted Int /home/babycat/mylab/cs143/script/../examples/graph.cl:308 
+cond noted String /home/babycat/mylab/cs143/script/../examples/graph.cl:342 
+cond noted Object /home/babycat/mylab/cs143/script/../examples/graph.cl:333 
+cond noted Object /home/babycat/mylab/cs143/script/../examples/graph.cl:328 
+cond noted Bool /home/babycat/mylab/cs143/script/../examples/graph.cl:373 
+cond noted Bool /home/babycat/mylab/cs143/script/../examples/graph.cl:378 
+#38
+_program
+  #38
+  _class
+    Graph
+    Object
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #40
+    _attr
+      vertices
+      VList
+      #40
+      _new
+        VList
+      : VList
+    #41
+    _attr
+      edges
+      EList
+      #41
+      _new
+        EList
+      : EList
+    #43
+    _method
+      add_vertice
+      #43
+      _formal
+        v
+        Vertice
+      Object
+      #43
+      _block
+        #44
+        _assign
+          edges
+          #44
+          _dispatch
+            #44
+            _dispatch
+              #44
+              _object
+                v
+              : Vertice
+              outgoing
+              (
+              )
+            : EList
+            append
+            (
+            #44
+            _object
+              edges
+            : EList
+            )
+          : EList
+        : EList
+        #45
+        _assign
+          vertices
+          #45
+          _dispatch
+            #45
+            _object
+              vertices
+            : VList
+            cons
+            (
+            #45
+            _object
+              v
+            : Vertice
+            )
+          : VList
+        : VList
+      : VList
+    #48
+    _method
+      print_E
+      Object
+      #48
+      _dispatch
+        #48
+        _object
+          edges
+        : EList
+        print
+        (
+        )
+      : Object
+    #49
+    _method
+      print_V
+      Object
+      #49
+      _dispatch
+        #49
+        _object
+          vertices
+        : VList
+        print
+        (
+        )
+      : Object
+    )
+  #53
+  _class
+    Vertice
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #55
+    _attr
+      num
+      Int
+      #0
+      _no_expr
+      : _no_type
+    #56
+    _attr
+      out
+      EList
+      #56
+      _new
+        EList
+      : EList
+    #58
+    _method
+      outgoing
+      EList
+      #58
+      _object
+        out
+      : EList
+    #60
+    _method
+      number
+      Int
+      #60
+      _object
+        num
+      : Int
+    #62
+    _method
+      init
+      #62
+      _formal
+        n
+        Int
+      SELF_TYPE
+      #63
+      _block
+        #64
+        _assign
+          num
+          #64
+          _object
+            n
+          : Int
+        : Int
+        #65
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #70
+    _method
+      add_out
+      #70
+      _formal
+        s
+        Edge
+      SELF_TYPE
+      #71
+      _block
+        #72
+        _assign
+          out
+          #72
+          _dispatch
+            #72
+            _object
+              out
+            : EList
+            cons
+            (
+            #72
+            _object
+              s
+            : Edge
+            )
+          : EList
+        : EList
+        #73
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #77
+    _method
+      print
+      Object
+      #78
+      _block
+        #79
+        _dispatch
+          #79
+          _object
+            self
+          : SELF_TYPE
+          out_int
+          (
+          #79
+          _object
+            num
+          : Int
+          )
+        : IO
+        #80
+        _dispatch
+          #80
+          _object
+            out
+          : EList
+          print
+          (
+          )
+        : Object
+      : Object
+    )
+  #86
+  _class
+    Edge
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #88
+    _attr
+      from
+      Int
+      #0
+      _no_expr
+      : _no_type
+    #89
+    _attr
+      to
+      Int
+      #0
+      _no_expr
+      : _no_type
+    #90
+    _attr
+      weight
+      Int
+      #0
+      _no_expr
+      : _no_type
+    #92
+    _method
+      init
+      #92
+      _formal
+        f
+        Int
+      #92
+      _formal
+        t
+        Int
+      #92
+      _formal
+        w
+        Int
+      SELF_TYPE
+      #93
+      _block
+        #94
+        _assign
+          from
+          #94
+          _object
+            f
+          : Int
+        : Int
+        #95
+        _assign
+          to
+          #95
+          _object
+            t
+          : Int
+        : Int
+        #96
+        _assign
+          weight
+          #96
+          _object
+            w
+          : Int
+        : Int
+        #97
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #101
+    _method
+      print
+      Object
+      #102
+      _block
+        #103
+        _dispatch
+          #103
+          _object
+            self
+          : SELF_TYPE
+          out_string
+          (
+          #103
+          _string
+            " ("
+          : String
+          )
+        : IO
+        #104
+        _dispatch
+          #104
+          _object
+            self
+          : SELF_TYPE
+          out_int
+          (
+          #104
+          _object
+            from
+          : Int
+          )
+        : IO
+        #105
+        _dispatch
+          #105
+          _object
+            self
+          : SELF_TYPE
+          out_string
+          (
+          #105
+          _string
+            ","
+          : String
+          )
+        : IO
+        #106
+        _dispatch
+          #106
+          _object
+            self
+          : SELF_TYPE
+          out_int
+          (
+          #106
+          _object
+            to
+          : Int
+          )
+        : IO
+        #107
+        _dispatch
+          #107
+          _object
+            self
+          : SELF_TYPE
+          out_string
+          (
+          #107
+          _string
+            ")"
+          : String
+          )
+        : IO
+        #108
+        _dispatch
+          #108
+          _object
+            self
+          : SELF_TYPE
+          out_int
+          (
+          #108
+          _object
+            weight
+          : Int
+          )
+        : IO
+      : IO
+    )
+  #116
+  _class
+    EList
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #119
+    _attr
+      car
+      Edge
+      #0
+      _no_expr
+      : _no_type
+    #121
+    _method
+      isNil
+      Bool
+      #121
+      _bool
+        1
+      : Bool
+    #123
+    _method
+      head
+      Edge
+      #123
+      _block
+        #123
+        _dispatch
+          #123
+          _object
+            self
+          : SELF_TYPE
+          abort
+          (
+          )
+        : Object
+        #123
+        _object
+          car
+        : Edge
+      : Edge
+    #125
+    _method
+      tail
+      EList
+      #125
+      _block
+        #125
+        _dispatch
+          #125
+          _object
+            self
+          : SELF_TYPE
+          abort
+          (
+          )
+        : Object
+        #125
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #134
+    _method
+      cons
+      #134
+      _formal
+        e
+        Edge
+      EList
+      #135
+      _dispatch
+        #135
+        _new
+          ECons
+        : ECons
+        init
+        (
+        #135
+        _object
+          e
+        : Edge
+        #135
+        _object
+          self
+        : SELF_TYPE
+        )
+      : EList
+    #138
+    _method
+      append
+      #138
+      _formal
+        l
+        EList
+      EList
+      #139
+      _cond
+        #139
+        _dispatch
+          #139
+          _object
+            self
+          : SELF_TYPE
+          isNil
+          (
+          )
+        : Bool
+        #139
+        _object
+          l
+        : EList
+        #140
+        _dispatch
+          #140
+          _dispatch
+            #140
+            _dispatch
+              #140
+              _object
+                self
+              : SELF_TYPE
+              tail
+              (
+              )
+            : EList
+            append
+            (
+            #140
+            _object
+              l
+            : EList
+            )
+          : EList
+          cons
+          (
+          #140
+          _dispatch
+            #140
+            _object
+              self
+            : SELF_TYPE
+            head
+            (
+            )
+          : Edge
+          )
+        : EList
+      : EList
+    #144
+    _method
+      print
+      Object
+      #145
+      _dispatch
+        #145
+        _object
+          self
+        : SELF_TYPE
+        out_string
+        (
+        #145
+        _string
+          "\n"
+        : String
+        )
+      : IO
+    )
+  #164
+  _class
+    ECons
+    EList
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #166
+    _attr
+      cdr
+      EList
+      #0
+      _no_expr
+      : _no_type
+    #168
+    _method
+      isNil
+      Bool
+      #168
+      _bool
+        0
+      : Bool
+    #170
+    _method
+      head
+      Edge
+      #170
+      _object
+        car
+      : Edge
+    #172
+    _method
+      tail
+      EList
+      #172
+      _object
+        cdr
+      : EList
+    #174
+    _method
+      init
+      #174
+      _formal
+        e
+        Edge
+      #174
+      _formal
+        rest
+        EList
+      EList
+      #175
+      _block
+        #176
+        _assign
+          car
+          #176
+          _object
+            e
+          : Edge
+        : Edge
+        #177
+        _assign
+          cdr
+          #177
+          _object
+            rest
+          : EList
+        : EList
+        #178
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #182
+    _method
+      print
+      Object
+      #183
+      _block
+        #184
+        _dispatch
+          #184
+          _object
+            car
+          : Edge
+          print
+          (
+          )
+        : Object
+        #185
+        _dispatch
+          #185
+          _object
+            cdr
+          : EList
+          print
+          (
+          )
+        : Object
+      : Object
+    )
+  #194
+  _class
+    VList
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #197
+    _attr
+      car
+      Vertice
+      #0
+      _no_expr
+      : _no_type
+    #199
+    _method
+      isNil
+      Bool
+      #199
+      _bool
+        1
+      : Bool
+    #201
+    _method
+      head
+      Vertice
+      #201
+      _block
+        #201
+        _dispatch
+          #201
+          _object
+            self
+          : SELF_TYPE
+          abort
+          (
+          )
+        : Object
+        #201
+        _object
+          car
+        : Vertice
+      : Vertice
+    #203
+    _method
+      tail
+      VList
+      #203
+      _block
+        #203
+        _dispatch
+          #203
+          _object
+            self
+          : SELF_TYPE
+          abort
+          (
+          )
+        : Object
+        #203
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #212
+    _method
+      cons
+      #212
+      _formal
+        v
+        Vertice
+      VList
+      #213
+      _dispatch
+        #213
+        _new
+          VCons
+        : VCons
+        init
+        (
+        #213
+        _object
+          v
+        : Vertice
+        #213
+        _object
+          self
+        : SELF_TYPE
+        )
+      : VList
+    #216
+    _method
+      print
+      Object
+      #216
+      _dispatch
+        #216
+        _object
+          self
+        : SELF_TYPE
+        out_string
+        (
+        #216
+        _string
+          "\n"
+        : String
+        )
+      : IO
+    )
+  #221
+  _class
+    VCons
+    VList
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #223
+    _attr
+      cdr
+      VList
+      #0
+      _no_expr
+      : _no_type
+    #225
+    _method
+      isNil
+      Bool
+      #225
+      _bool
+        0
+      : Bool
+    #227
+    _method
+      head
+      Vertice
+      #227
+      _object
+        car
+      : Vertice
+    #229
+    _method
+      tail
+      VList
+      #229
+      _object
+        cdr
+      : VList
+    #231
+    _method
+      init
+      #231
+      _formal
+        v
+        Vertice
+      #231
+      _formal
+        rest
+        VList
+      VList
+      #232
+      _block
+        #233
+        _assign
+          car
+          #233
+          _object
+            v
+          : Vertice
+        : Vertice
+        #234
+        _assign
+          cdr
+          #234
+          _object
+            rest
+          : VList
+        : VList
+        #235
+        _object
+          self
+        : SELF_TYPE
+      : SELF_TYPE
+    #239
+    _method
+      print
+      Object
+      #240
+      _block
+        #241
+        _dispatch
+          #241
+          _object
+            car
+          : Vertice
+          print
+          (
+          )
+        : Object
+        #242
+        _dispatch
+          #242
+          _object
+            cdr
+          : VList
+          print
+          (
+          )
+        : Object
+      : Object
+    )
+  #249
+  _class
+    Parse
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #252
+    _attr
+      boolop
+      BoolOp
+      #252
+      _new
+        BoolOp
+      : BoolOp
+    #256
+    _method
+      read_input
+      Graph
+      #258
+      _let
+        g
+        Graph
+        #258
+        _new
+          Graph
+        : Graph
+        #258
+        _block
+          #259
+          _let
+            line
+            String
+            #259
+            _dispatch
+              #259
+              _object
+                self
+              : SELF_TYPE
+              in_string
+              (
+              )
+            : String
+            #260
+            _loop
+              #260
+              _dispatch
+                #260
+                _object
+                  boolop
+                : BoolOp
+                and
+                (
+                #260
+                _comp
+                  #260
+                  _eq
+                    #260
+                    _object
+                      line
+                    : String
+                    #260
+                    _string
+                      "\n"
+                    : String
+                  : Bool
+                : Int
+                #260
+                _comp
+                  #260
+                  _eq
+                    #260
+                    _object
+                      line
+                    : String
+                    #260
+                    _string
+                      ""
+                    : String
+                  : Bool
+                : Int
+                )
+              : Bool
+              #260
+              _block
+                #263
+                _dispatch
+                  #263
+                  _object
+                    g
+                  : Graph
+                  add_vertice
+                  (
+                  #263
+                  _dispatch
+                    #263
+                    _object
+                      self
+                    : SELF_TYPE
+                    parse_line
+                    (
+                    #263
+                    _object
+                      line
+                    : String
+                    )
+                  : Vertice
+                  )
+                : Object
+                #264
+                _assign
+                  line
+                  #264
+                  _dispatch
+                    #264
+                    _object
+                      self
+                    : SELF_TYPE
+                    in_string
+                    (
+                    )
+                  : String
+                : String
+              : String
+            : Object
+          : Object
+          #267
+          _object
+            g
+          : Graph
+        : Graph
+      : Graph
+    #272
+    _method
+      parse_line
+      #272
+      _formal
+        s
+        String
+      Vertice
+      #273
+      _let
+        v
+        Vertice
+        #273
+        _dispatch
+          #273
+          _new
+            Vertice
+          : Vertice
+          init
+          (
+          #273
+          _dispatch
+            #273
+            _object
+              self
+            : SELF_TYPE
+            a2i
+            (
+            #273
+            _object
+              s
+            : String
+            )
+          : Int
+          )
+        : SELF_TYPE
+        #273
+        _block
+          #274
+          _loop
+            #274
+            _comp
+              #274
+              _eq
+                #274
+                _dispatch
+                  #274
+                  _object
+                    rest
+                  : Object
+                  length
+                  (
+                  )
+                : Object
+                #274
+                _int
+                  0
+                : Int
+              : Bool
+            : Int
+            #274
+            _block
+              #277
+              _let
+                succ
+                Int
+                #277
+                _dispatch
+                  #277
+                  _object
+                    self
+                  : SELF_TYPE
+                  a2i
+                  (
+                  #277
+                  _object
+                    rest
+                  : Object
+                  )
+                : Int
+                #278
+                _let
+                  weight
+                  Int
+                  #278
+                  _dispatch
+                    #278
+                    _object
+                      self
+                    : SELF_TYPE
+                    a2i
+                    (
+                    #278
+                    _object
+                      rest
+                    : Object
+                    )
+                  : Int
+                  #280
+                  _dispatch
+                    #280
+                    _object
+                      v
+                    : Vertice
+                    add_out
+                    (
+                    #280
+                    _dispatch
+                      #280
+                      _new
+                        Edge
+                      : Edge
+                      init
+                      (
+                      #280
+                      _dispatch
+                        #280
+                        _object
+                          v
+                        : Vertice
+                        number
+                        (
+                        )
+                      : Int
+                      #281
+                      _object
+                        succ
+                      : Int
+                      #282
+                      _object
+                        weight
+                      : Int
+                      )
+                    : SELF_TYPE
+                    )
+                  : SELF_TYPE
+                : SELF_TYPE
+              : SELF_TYPE
+            : SELF_TYPE
+          : Object
+          #285
+          _object
+            v
+          : Vertice
+        : Vertice
+      : Vertice
+    #290
+    _method
+      c2i
+      #290
+      _formal
+        char
+        String
+      Int
+      #291
+      _cond
+        #291
+        _eq
+          #291
+          _object
+            char
+          : String
+          #291
+          _string
+            "0"
+          : String
+        : Bool
+        #291
+        _int
+          0
+        : Int
+        #292
+        _cond
+          #292
+          _eq
+            #292
+            _object
+              char
+            : String
+            #292
+            _string
+              "1"
+            : String
+          : Bool
+          #292
+          _int
+            1
+          : Int
+          #293
+          _cond
+            #293
+            _eq
+              #293
+              _object
+                char
+              : String
+              #293
+              _string
+                "2"
+              : String
+            : Bool
+            #293
+            _int
+              2
+            : Int
+            #294
+            _cond
+              #294
+              _eq
+                #294
+                _object
+                  char
+                : String
+                #294
+                _string
+                  "3"
+                : String
+              : Bool
+              #294
+              _int
+                3
+              : Int
+              #295
+              _cond
+                #295
+                _eq
+                  #295
+                  _object
+                    char
+                  : String
+                  #295
+                  _string
+                    "4"
+                  : String
+                : Bool
+                #295
+                _int
+                  4
+                : Int
+                #296
+                _cond
+                  #296
+                  _eq
+                    #296
+                    _object
+                      char
+                    : String
+                    #296
+                    _string
+                      "5"
+                    : String
+                  : Bool
+                  #296
+                  _int
+                    5
+                  : Int
+                  #297
+                  _cond
+                    #297
+                    _eq
+                      #297
+                      _object
+                        char
+                      : String
+                      #297
+                      _string
+                        "6"
+                      : String
+                    : Bool
+                    #297
+                    _int
+                      6
+                    : Int
+                    #298
+                    _cond
+                      #298
+                      _eq
+                        #298
+                        _object
+                          char
+                        : String
+                        #298
+                        _string
+                          "7"
+                        : String
+                      : Bool
+                      #298
+                      _int
+                        7
+                      : Int
+                      #299
+                      _cond
+                        #299
+                        _eq
+                          #299
+                          _object
+                            char
+                          : String
+                          #299
+                          _string
+                            "8"
+                          : String
+                        : Bool
+                        #299
+                        _int
+                          8
+                        : Int
+                        #300
+                        _cond
+                          #300
+                          _eq
+                            #300
+                            _object
+                              char
+                            : String
+                            #300
+                            _string
+                              "9"
+                            : String
+                          : Bool
+                          #300
+                          _int
+                            9
+                          : Int
+                          #301
+                          _block
+                            #301
+                            _dispatch
+                              #301
+                              _object
+                                self
+                              : SELF_TYPE
+                              abort
+                              (
+                              )
+                            : Object
+                            #301
+                            _int
+                              0
+                            : Int
+                          : Int
+                        : Int
+                      : Int
+                    : Int
+                  : Int
+                : Int
+              : Int
+            : Int
+          : Int
+        : Int
+      : Int
+    #305
+    _attr
+      rest
+      String
+      #0
+      _no_expr
+      : _no_type
+    #307
+    _method
+      a2i
+      #307
+      _formal
+        s
+        String
+      Int
+      #308
+      _cond
+        #308
+        _eq
+          #308
+          _dispatch
+            #308
+            _object
+              s
+            : String
+            length
+            (
+            )
+          : Int
+          #308
+          _int
+            0
+          : Int
+        : Bool
+        #308
+        _int
+          0
+        : Int
+        #309
+        _cond
+          #309
+          _eq
+            #309
+            _dispatch
+              #309
+              _object
+                s
+              : String
+              substr
+              (
+              #309
+              _int
+                0
+              : Int
+              #309
+              _int
+                1
+              : Int
+              )
+            : String
+            #309
+            _string
+              "-"
+            : String
+          : Bool
+          #309
+          _neg
+            #309
+            _dispatch
+              #309
+              _object
+                self
+              : SELF_TYPE
+              a2i_aux
+              (
+              #309
+              _dispatch
+                #309
+                _object
+                  s
+                : String
+                substr
+                (
+                #309
+                _int
+                  1
+                : Int
+                #309
+                _sub
+                  #309
+                  _dispatch
+                    #309
+                    _object
+                      s
+                    : String
+                    length
+                    (
+                    )
+                  : Int
+                  #309
+                  _int
+                    1
+                  : Int
+                : Int
+                )
+              : String
+              )
+            : Int
+          : Int
+          #310
+          _cond
+            #310
+            _eq
+              #310
+              _dispatch
+                #310
+                _object
+                  s
+                : String
+                substr
+                (
+                #310
+                _int
+                  0
+                : Int
+                #310
+                _int
+                  1
+                : Int
+                )
+              : String
+              #310
+              _string
+                " "
+              : String
+            : Bool
+            #310
+            _dispatch
+              #310
+              _object
+                self
+              : SELF_TYPE
+              a2i
+              (
+              #310
+              _dispatch
+                #310
+                _object
+                  s
+                : String
+                substr
+                (
+                #310
+                _int
+                  1
+                : Int
+                #310
+                _sub
+                  #310
+                  _dispatch
+                    #310
+                    _object
+                      s
+                    : String
+                    length
+                    (
+                    )
+                  : Int
+                  #310
+                  _int
+                    1
+                  : Int
+                : Int
+                )
+              : String
+              )
+            : Int
+            #311
+            _dispatch
+              #311
+              _object
+                self
+              : SELF_TYPE
+              a2i_aux
+              (
+              #311
+              _object
+                s
+              : String
+              )
+            : Int
+          : Int
+        : Int
+      : Int
+    #321
+    _method
+      a2i_aux
+      #321
+      _formal
+        s
+        String
+      Int
+      #322
+      _let
+        int
+        Int
+        #322
+        _int
+          0
+        : Int
+        #323
+        _block
+          #324
+          _let
+            j
+            Int
+            #324
+            _dispatch
+              #324
+              _object
+                s
+              : String
+              length
+              (
+              )
+            : Int
+            #325
+            _let
+              i
+              Int
+              #325
+              _int
+                0
+              : Int
+              #326
+              _loop
+                #326
+                _lt
+                  #326
+                  _object
+                    i
+                  : Int
+                  #326
+                  _object
+                    j
+                  : Int
+                : Bool
+                #327
+                _let
+                  c
+                  String
+                  #327
+                  _dispatch
+                    #327
+                    _object
+                      s
+                    : String
+                    substr
+                    (
+                    #327
+                    _object
+                      i
+                    : Int
+                    #327
+                    _int
+                      1
+                    : Int
+                    )
+                  : String
+                  #328
+                  _cond
+                    #328
+                    _eq
+                      #328
+                      _object
+                        c
+                      : String
+                      #328
+                      _string
+                        " "
+                      : String
+                    : Bool
+                    #329
+                    _block
+                      #330
+                      _assign
+                        rest
+                        #330
+                        _dispatch
+                          #330
+                          _object
+                            s
+                          : String
+                          substr
+                          (
+                          #330
+                          _plus
+                            #330
+                            _object
+                              i
+                            : Int
+                            #330
+                            _int
+                              1
+                            : Int
+                          : Int
+                          #330
+                          _sub
+                            #330
+                            _sub
+                              #330
+                              _dispatch
+                                #330
+                                _object
+                                  s
+                                : String
+                                length
+                                (
+                                )
+                              : Int
+                              #330
+                              _object
+                                i
+                              : Int
+                            : Int
+                            #330
+                            _int
+                              1
+                            : Int
+                          : Int
+                          )
+                        : String
+                      : String
+                      #331
+                      _assign
+                        i
+                        #331
+                        _object
+                          j
+                        : Int
+                      : Int
+                    : Int
+                    #333
+                    _cond
+                      #333
+                      _eq
+                        #333
+                        _object
+                          c
+                        : String
+                        #333
+                        _string
+                          ","
+                        : String
+                      : Bool
+                      #334
+                      _block
+                        #335
+                        _assign
+                          rest
+                          #335
+                          _dispatch
+                            #335
+                            _object
+                              s
+                            : String
+                            substr
+                            (
+                            #335
+                            _plus
+                              #335
+                              _object
+                                i
+                              : Int
+                              #335
+                              _int
+                                1
+                              : Int
+                            : Int
+                            #335
+                            _sub
+                              #335
+                              _sub
+                                #335
+                                _dispatch
+                                  #335
+                                  _object
+                                    s
+                                  : String
+                                  length
+                                  (
+                                  )
+                                : Int
+                                #335
+                                _object
+                                  i
+                                : Int
+                              : Int
+                              #335
+                              _int
+                                1
+                              : Int
+                            : Int
+                            )
+                          : String
+                        : String
+                        #336
+                        _assign
+                          i
+                          #336
+                          _object
+                            j
+                          : Int
+                        : Int
+                      : Int
+                      #339
+                      _block
+                        #340
+                        _assign
+                          int
+                          #340
+                          _plus
+                            #340
+                            _mul
+                              #340
+                              _object
+                                int
+                              : Int
+                              #340
+                              _int
+                                10
+                              : Int
+                            : Int
+                            #340
+                            _dispatch
+                              #340
+                              _object
+                                self
+                              : SELF_TYPE
+                              c2i
+                              (
+                              #340
+                              _dispatch
+                                #340
+                                _object
+                                  s
+                                : String
+                                substr
+                                (
+                                #340
+                                _object
+                                  i
+                                : Int
+                                #340
+                                _int
+                                  1
+                                : Int
+                                )
+                              : String
+                              )
+                            : Int
+                          : Int
+                        : Int
+                        #341
+                        _assign
+                          i
+                          #341
+                          _plus
+                            #341
+                            _object
+                              i
+                            : Int
+                            #341
+                            _int
+                              1
+                            : Int
+                          : Int
+                        : Int
+                        #342
+                        _cond
+                          #342
+                          _eq
+                            #342
+                            _object
+                              i
+                            : Int
+                            #342
+                            _object
+                              j
+                            : Int
+                          : Bool
+                          #342
+                          _assign
+                            rest
+                            #342
+                            _string
+                              ""
+                            : String
+                          : String
+                          #342
+                          _string
+                            ""
+                          : String
+                        : String
+                      : String
+                    : Object
+                  : Object
+                : Object
+              : Object
+            : Object
+          : Object
+          #349
+          _object
+            int
+          : Int
+        : Int
+      : Int
+    )
+  #357
+  _class
+    Main
+    Parse
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #359
+    _attr
+      g
+      Graph
+      #359
+      _dispatch
+        #359
+        _object
+          self
+        : SELF_TYPE
+        read_input
+        (
+        )
+      : Graph
+    #361
+    _method
+      main
+      Object
+      #362
+      _block
+        #363
+        _dispatch
+          #363
+          _object
+            g
+          : Graph
+          print_V
+          (
+          )
+        : Object
+        #364
+        _dispatch
+          #364
+          _object
+            g
+          : Graph
+          print_E
+          (
+          )
+        : Object
+      : Object
+    )
+  #370
+  _class
+    BoolOp
+    Object
+    "/home/babycat/mylab/cs143/script/../examples/graph.cl"
+    (
+    #372
+    _method
+      and
+      #372
+      _formal
+        b1
+        Bool
+      #372
+      _formal
+        b2
+        Bool
+      Bool
+      #373
+      _cond
+        #373
+        _object
+          b1
+        : Bool
+        #373
+        _object
+          b2
+        : Bool
+        #373
+        _bool
+          0
+        : Bool
+      : Bool
+    #377
+    _method
+      or
+      #377
+      _formal
+        b1
+        Bool
+      #377
+      _formal
+        b2
+        Bool
+      Bool
+      #378
+      _cond
+        #378
+        _object
+          b1
+        : Bool
+        #378
+        _bool
+          1
+        : Bool
+        #378
+        _object
+          b2
+        : Bool
+      : Bool
+    )===== case hairyscary result for golden is ===== 
+#3
+_program
+  #3
+  _class
+    Foo
+    Bazz
+    "/home/babycat/mylab/cs143/script/../examples/hairyscary.cl"
+    (
+    #4
+    _attr
+      a
+      Razz
+      #4
+      _typcase
+        #4
+        _object
+          self
+        : SELF_TYPE
+        #5
+        _branch
+          n
+          Razz
+          #5
+          _new
+            Bar
+          : Bar
+        #6
+        _branch
+          n
+          Foo
+          #6
+          _new
+            Razz
+          : Razz
+        #7
+        _branch
+          n
+          Bar
+          #7
+          _object
+            n
+          : Bar
+      : Razz
+    #10
+    _attr
+      b
+      Int
+      #10
+      _plus
+        #10
+        _plus
+          #10
+          _plus
+            #10
+            _dispatch
+              #10
+              _object
+                a
+              : Razz
+              doh
+              (
+              )
+            : Int
+            #10
+            _dispatch
+              #10
+              _object
+                g
+              : Foo
+              doh
+              (
+              )
+            : Int
+          : Int
+          #10
+          _dispatch
+            #10
+            _object
+              self
+            : SELF_TYPE
+            doh
+            (
+            )
+          : Int
+        : Int
+        #10
+        _dispatch
+          #10
+          _object
+            self
+          : SELF_TYPE
+          printh
+          (
+          )
+        : Int
+      : Int
+    #12
+    _method
+      doh
+      Int
+      #12
+      _let
+        i
+        Int
+        #12
+        _object
+          h
+        : Int
+        #12
+        _block
+          #12
+          _assign
+            h
+            #12
+            _plus
+              #12
+              _object
+                h
+              : Int
+              #12
+              _int
+                2
+              : Int
+            : Int
+          : Int
+          #12
+          _object
+            i
+          : Int
+        : Int
+      : Int
+    )
+  #16
+  _class
+    Bar
+    Razz
+    "/home/babycat/mylab/cs143/script/../examples/hairyscary.cl"
+    (
+    #18
+    _attr
+      c
+      Int
+      #18
+      _dispatch
+        #18
+        _object
+          self
+        : SELF_TYPE
+        doh
+        (
+        )
+      : Int
+    #20
+    _attr
+      d
+      Object
+      #20
+      _dispatch
+        #20
+        _object
+          self
+        : SELF_TYPE
+        printh
+        (
+        )
+      : Int
+    )
+  #24
+  _class
+    Razz
+    Foo
+    "/home/babycat/mylab/cs143/script/../examples/hairyscary.cl"
+    (
+    #26
+    _attr
+      e
+      Bar
+      #26
+      _typcase
+        #26
+        _object
+          self
+        : SELF_TYPE
+        #27
+        _branch
+          n
+          Razz
+          #27
+          _new
+            Bar
+          : Bar
+        #28
+        _branch
+          n
+          Bar
+          #28
+          _object
+            n
+          : Bar
+      : Bar
+    #31
+    _attr
+      f
+      Int
+      #31
+      _plus
+        #31
+        _plus
+          #31
+          _plus
+            #31
+            _plus
+              #31
+              _static_dispatch
+                #31
+                _object
+                  a
+                : Razz
+                Bazz
+                doh
+                (
+                )
+              : Int
+              #31
+              _dispatch
+                #31
+                _object
+                  g
+                : Foo
+                doh
+                (
+                )
+              : Int
+            : Int
+            #31
+            _dispatch
+              #31
+              _object
+                e
+              : Bar
+              doh
+              (
+              )
+            : Int
+          : Int
+          #31
+          _dispatch
+            #31
+            _object
+              self
+            : SELF_TYPE
+            doh
+            (
+            )
+          : Int
+        : Int
+        #31
+        _dispatch
+          #31
+          _object
+            self
+          : SELF_TYPE
+          printh
+          (
+          )
+        : Int
+      : Int
+    )
+  #35
+  _class
+    Bazz
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/hairyscary.cl"
+    (
+    #37
+    _attr
+      h
+      Int
+      #37
+      _int
+        1
+      : Int
+    #39
+    _attr
+      g
+      Foo
+      #39
+      _typcase
+        #39
+        _object
+          self
+        : SELF_TYPE
+        #40
+        _branch
+          n
+          Bazz
+          #40
+          _new
+            Foo
+          : Foo
+        #41
+        _branch
+          n
+          Razz
+          #41
+          _new
+            Bar
+          : Bar
+        #42
+        _branch
+          n
+          Foo
+          #42
+          _new
+            Razz
+          : Razz
+        #43
+        _branch
+          n
+          Bar
+          #43
+          _object
+            n
+          : Bar
+      : Foo
+    #46
+    _attr
+      i
+      Object
+      #46
+      _dispatch
+        #46
+        _object
+          self
+        : SELF_TYPE
+        printh
+        (
+        )
+      : Int
+    #48
+    _method
+      printh
+      Int
+      #48
+      _block
+        #48
+        _dispatch
+          #48
+          _object
+            self
+          : SELF_TYPE
+          out_int
+          (
+          #48
+          _object
+            h
+          : Int
+          )
+        : SELF_TYPE
+        #48
+        _int
+          0
+        : Int
+      : Int
+    #50
+    _method
+      doh
+      Int
+      #50
+      _let
+        i
+        Int
+        #50
+        _object
+          h
+        : Int
+        #50
+        _block
+          #50
+          _assign
+            h
+            #50
+            _plus
+              #50
+              _object
+                h
+              : Int
+              #50
+              _int
+                1
+              : Int
+            : Int
+          : Int
+          #50
+          _object
+            i
+          : Int
+        : Int
+      : Int
+    )
+  #54
+  _class
+    Main
+    Object
+    "/home/babycat/mylab/cs143/script/../examples/hairyscary.cl"
+    (
+    #55
+    _attr
+      a
+      Bazz
+      #55
+      _new
+        Bazz
+      : Bazz
+    #56
+    _attr
+      b
+      Foo
+      #56
+      _new
+        Foo
+      : Foo
+    #57
+    _attr
+      c
+      Razz
+      #57
+      _new
+        Razz
+      : Razz
+    #58
+    _attr
+      d
+      Bar
+      #58
+      _new
+        Bar
+      : Bar
+    #60
+    _method
+      main
+      String
+      #60
+      _string
+        "do nothing"
+      : String
+    )===== case hairyscary result for my is ===== 
+#3
+_program
+  #3
+  _class
+    Foo
+    Bazz
+    "/home/babycat/mylab/cs143/script/../examples/hairyscary.cl"
+    (
+    #4
+    _attr
+      a
+      Razz
+      #4
+      _typcase
+        #4
+        _object
+          self
+        : SELF_TYPE
+        #5
+        _branch
+          n
+          Razz
+          #5
+          _new
+            Bar
+          : Bar
+        #6
+        _branch
+          n
+          Foo
+          #6
+          _new
+            Razz
+          : Razz
+        #7
+        _branch
+          n
+          Bar
+          #7
+          _object
+            n
+          : Bar
+      : Razz
+    #10
+    _attr
+      b
+      Int
+      #10
+      _plus
+        #10
+        _plus
+          #10
+          _plus
+            #10
+            _dispatch
+              #10
+              _object
+                a
+              : Razz
+              doh
+              (
+              )
+            : Int
+            #10
+            _dispatch
+              #10
+              _object
+                g
+              : Foo
+              doh
+              (
+              )
+            : Int
+          : Int
+          #10
+          _dispatch
+            #10
+            _object
+              self
+            : SELF_TYPE
+            doh
+            (
+            )
+          : Int
+        : Int
+        #10
+        _dispatch
+          #10
+          _object
+            self
+          : SELF_TYPE
+          printh
+          (
+          )
+        : Int
+      : Int
+    #12
+    _method
+      doh
+      Int
+      #12
+      _let
+        i
+        Int
+        #12
+        _object
+          h
+        : Int
+        #12
+        _block
+          #12
+          _assign
+            h
+            #12
+            _plus
+              #12
+              _object
+                h
+              : Int
+              #12
+              _int
+                2
+              : Int
+            : Int
+          : Int
+          #12
+          _object
+            i
+          : Int
+        : Int
+      : Int
+    )
+  #16
+  _class
+    Bar
+    Razz
+    "/home/babycat/mylab/cs143/script/../examples/hairyscary.cl"
+    (
+    #18
+    _attr
+      c
+      Int
+      #18
+      _dispatch
+        #18
+        _object
+          self
+        : SELF_TYPE
+        doh
+        (
+        )
+      : Int
+    #20
+    _attr
+      d
+      Object
+      #20
+      _dispatch
+        #20
+        _object
+          self
+        : SELF_TYPE
+        printh
+        (
+        )
+      : Int
+    )
+  #24
+  _class
+    Razz
+    Foo
+    "/home/babycat/mylab/cs143/script/../examples/hairyscary.cl"
+    (
+    #26
+    _attr
+      e
+      Bar
+      #26
+      _typcase
+        #26
+        _object
+          self
+        : SELF_TYPE
+        #27
+        _branch
+          n
+          Razz
+          #27
+          _new
+            Bar
+          : Bar
+        #28
+        _branch
+          n
+          Bar
+          #28
+          _object
+            n
+          : Bar
+      : Bar
+    #31
+    _attr
+      f
+      Int
+      #31
+      _plus
+        #31
+        _plus
+          #31
+          _plus
+            #31
+            _plus
+              #31
+              _static_dispatch
+                #31
+                _object
+                  a
+                : Razz
+                Bazz
+                doh
+                (
+                )
+              : Int
+              #31
+              _dispatch
+                #31
+                _object
+                  g
+                : Foo
+                doh
+                (
+                )
+              : Int
+            : Int
+            #31
+            _dispatch
+              #31
+              _object
+                e
+              : Bar
+              doh
+              (
+              )
+            : Int
+          : Int
+          #31
+          _dispatch
+            #31
+            _object
+              self
+            : SELF_TYPE
+            doh
+            (
+            )
+          : Int
+        : Int
+        #31
+        _dispatch
+          #31
+          _object
+            self
+          : SELF_TYPE
+          printh
+          (
+          )
+        : Int
+      : Int
+    )
+  #35
+  _class
+    Bazz
+    IO
+    "/home/babycat/mylab/cs143/script/../examples/hairyscary.cl"
+    (
+    #37
+    _attr
+      h
+      Int
+      #37
+      _int
+        1
+      : Int
+    #39
+    _attr
+      g
+      Foo
+      #39
+      _typcase
+        #39
+        _object
+          self
+        : SELF_TYPE
+        #40
+        _branch
+          n
+          Bazz
+          #40
+          _new
+            Foo
+          : Foo
+        #41
+        _branch
+          n
+          Razz
+          #41
+          _new
+            Bar
+          : Bar
+        #42
+        _branch
+          n
+          Foo
+          #42
+          _new
+            Razz
+          : Razz
+        #43
+        _branch
+          n
+          Bar
+          #43
+          _object
+            n
+          : Bar
+      : Foo
+    #46
+    _attr
+      i
+      Object
+      #46
+      _dispatch
+        #46
+        _object
+          self
+        : SELF_TYPE
+        printh
+        (
+        )
+      : Int
+    #48
+    _method
+      printh
+      Int
+      #48
+      _block
+        #48
+        _dispatch
+          #48
+          _object
+            self
+          : SELF_TYPE
+          out_int
+          (
+          #48
+          _object
+            h
+          : Int
+          )
+        : IO
+        #48
+        _int
+          0
+        : Int
+      : Int
+    #50
+    _method
+      doh
+      Int
+      #50
+      _let
+        i
+        Int
+        #50
+        _object
+          h
+        : Int
+        #50
+        _block
+          #50
+          _assign
+            h
+            #50
+            _plus
+              #50
+              _object
+                h
+              : Int
+              #50
+              _int
+                1
+              : Int
+            : Int
+          : Int
+          #50
+          _object
+            i
+          : Int
+        : Int
+      : Int
+    )
+  #54
+  _class
+    Main
+    Object
+    "/home/babycat/mylab/cs143/script/../examples/hairyscary.cl"
+    (
+    #55
+    _attr
+      a
+      Bazz
+      #55
+      _new
+        Bazz
+      : Bazz
+    #56
+    _attr
+      b
+      Foo
+      #56
+      _new
+        Foo
+      : Foo
+    #57
+    _attr
+      c
+      Razz
+      #57
+      _new
+        Razz
+      : Razz
+    #58
+    _attr
+      d
+      Bar
+      #58
+      _new
+        Bar
+      : Bar
+    #60
+    _method
+      main
+      String
+      #60
+      _string
+        "do nothing"
+      : String
+    )

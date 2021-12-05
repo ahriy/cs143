@@ -10,4 +10,6 @@ else
 	sed -i 's/hang = 1/hang = 0/g' semant-phase.cc
 	make semant
 	./lexer $1 | ./parser $* | ./semant $* > tmp
+	./lexer $1 | ./parser $* | semant $* > golden
+	diff tmp golden
 fi
