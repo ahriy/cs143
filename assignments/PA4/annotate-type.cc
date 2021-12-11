@@ -19,18 +19,43 @@ int cur_line = 1;
 static inline void scope_enter()
 {
    vartable->enterscope();
-   functable->enterscope();
 }
 
 static inline void scope_exits()
 {
    vartable->exitscope();
-   functable->exitscope();
 }
 
 static void semant_error(char *msg)
 {
    cerr << "[semant error " << cur_class->get_filename()->get_string() << ":" << cur_line << "] " << msg << endl;
+}
+
+// double pointer checking
+void inherent_checking()
+{
+   Class_ c1 = cur_class;
+   Class_ c2 = classtable->get_class_by_symbol(cur_class->get_class_parent());
+   if (c2 == NULL) {
+      sprintf(log_buf, "can't get %s's parent!\n",
+                        c1->get_class_name()->get_string());
+      semant_error(log_buf);
+      fatal_error("inherent_checking error!");
+   }
+
+   while(c1 != NULL && c2 != NULL) {
+      if (c1 == c2) {
+         sprintf(log_buf, "cyclic for class %s!\n",
+                           c1->get_class_name()->get_string());
+         semant_error(log_buf);
+         fatal_error("inherent_checking error!");
+      }
+      c1 = classtable->get_class_by_symbol(c1->get_class_parent());
+      if (c1 != NULL) {
+         c1 = classtable->get_class_by_symbol(c1->get_class_parent());
+      }
+      c2 = classtable->get_class_by_symbol(c2->get_class_parent());
+   }
 }
 
 static void add_ancestor_features()
@@ -50,6 +75,7 @@ static void add_ancestor_features()
    
 }
 
+// TODO need to do the parameter types validation
 static method_class *get_method_declare(Symbol cs, Symbol method_name)
 {
    if (classtable == 0) {
@@ -77,7 +103,7 @@ static method_class *get_method_declare(Symbol cs, Symbol method_name)
    return get_method_declare(c->get_class_parent(), method_name);
 }
 
-static bool class_check(Symbol cs)
+static bool is_valid_class(Symbol cs)
 {
    if (classtable == 0) {
       fatal_error("classtable has not been initialized!\n");
@@ -88,12 +114,12 @@ static bool class_check(Symbol cs)
    }
 
    if (cs == NULL) {
-      semant_error("class_check: Symbol is NULL");
+      semant_error("is_valid_class: Symbol is NULL");
       return false;
    }
 
    if (classtable->get_class_by_symbol(cs) == NULL) {
-      sprintf(log_buf, "class_check:class %s can't find class in class table", cs->get_string());
+      sprintf(log_buf, "is_valid_class:class %s can't find class in class table", cs->get_string());
       semant_error(log_buf);
    }
 
@@ -103,7 +129,7 @@ static bool class_check(Symbol cs)
 static bool class_is_comfort(Symbol cs1, Symbol cs2)
 {
 
-   if (!class_check(cs1) || !class_check(cs2)) {
+   if (!is_valid_class(cs1) || !is_valid_class(cs2)) {
       return false;
    }
 
@@ -137,8 +163,12 @@ static bool class_is_comfort(Symbol cs1, Symbol cs2)
 Symbol type_join(Symbol cs1, Symbol cs2)
 {
 
-   if (!class_check(cs1) || !class_check(cs2)) {
+   if (!is_valid_class(cs1) || !is_valid_class(cs2)) {
       return Object;
+   }
+
+   if (cs1 == SELF_TYPE && cs2 == SELF_TYPE) {
+      return SELF_TYPE;
    }
 
    if (cs1 == SELF_TYPE) {
@@ -193,8 +223,21 @@ void class__class::annotate_with_types()
    scope_enter();
    vartable->addid(self, new VarSymbolType(self, SELF_TYPE));
    cur_class = this;
+   //inherent_checking();
    add_ancestor_features();
    
+   for(int i = features->first(); features->more(i); i = features->next(i)) {
+      Feature f = features->nth(i);
+      attr_class *attr = dynamic_cast<attr_class*>(f);
+      if (attr) {
+         if (vartable->lookup(attr->name) != NULL) {
+            sprintf(log_buf, "redef of %s", attr->name->get_string());
+            semant_error(log_buf);
+         }
+         vartable->addid(attr->name, new VarSymbolType(attr->name, attr->type_decl));
+      }
+   }
+
    for(int i = features->first(); features->more(i); i = features->next(i)) {
       features->nth(i)->annotate_with_types();
    }
@@ -217,12 +260,9 @@ void method_class::annotate_with_types()
 void attr_class::annotate_with_types()
 {
    cur_line = this->get_line_number();
-   if (vartable->lookup(name) != NULL) {
-      sprintf(log_buf, "redef of %s", name->get_string());
-      semant_error(log_buf);
-   }
-   VarSymbolType *v = new VarSymbolType(name, type_decl);
-   vartable->addid(name, v);
+
+   // VarSymbolType *v = new VarSymbolType(name, type_decl);
+   // vartable->addid(name, v);
    init->annotate_with_types();
    if (init->get_type() != NULL && !class_is_comfort(init->type, type_decl)) {
       sprintf(log_buf, "attr_class is not comfort for init->type %s and type_decl %s", init->get_type()->get_string(), type_decl->get_string());
@@ -326,7 +366,14 @@ void dispatch_class::annotate_with_types()
       this->type = Object;
       return;
    }
-   this->type = m->get_return_type();
+   if (expr->get_type() == SELF_TYPE && m->get_return_type() == SELF_TYPE) {
+      this->type = SELF_TYPE;
+   } else if (expr->get_type() != SELF_TYPE && m->get_return_type() == SELF_TYPE) {
+      this->type = expr->get_type();
+   } else {
+      this->type = m->get_return_type();
+   }
+   // this->type = m->get_return_type();
 }
 
 //
@@ -344,7 +391,7 @@ void cond_class::annotate_with_types()
    }
 
    this->type = type_join(then_exp->get_type(), else_exp->get_type());
-   cerr << "cond noted " << this->type->get_string() << " " << cur_class->get_filename() << ":" << this->get_line_number() << " " << endl;
+   //cerr << "cond noted " << this->type->get_string() << " " << cur_class->get_filename() << ":" << this->get_line_number() << " " << endl;
 }
 
 //
@@ -384,6 +431,9 @@ void typcase_class::annotate_with_types()
          }
       }
    }
+   // if (cur_line == 95) {
+      
+   //}
 }
 
 //
@@ -505,7 +555,7 @@ void comp_class::annotate_with_types()
 {
    cur_line = this->get_line_number();
    e1->annotate_with_types();
-   this->type = Int;
+   this->type = Bool;
 }
 
 void int_const_class::annotate_with_types()

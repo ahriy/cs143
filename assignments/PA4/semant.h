@@ -57,7 +57,6 @@ class FuncSymbolType {
 
 
 extern SymbolTable<Symbol, VarSymbolType> *vartable;
-extern SymbolTable<Symbol, FuncSymbolType> *functable;
 extern ClassTable *classtable;
 //////////////////////////////////////////////////////////////////////
 //

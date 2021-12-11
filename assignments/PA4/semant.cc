@@ -273,7 +273,6 @@ ostream& ClassTable::semant_error()
      to build mycoolc.
  */
 SymbolTable<Symbol, VarSymbolType> *vartable;
-SymbolTable<Symbol, FuncSymbolType> *functable;
 ClassTable *classtable;
 
 void program_class::semant()
@@ -295,7 +294,6 @@ void program_class::semant()
     */
 
    vartable = new SymbolTable<Symbol, VarSymbolType>();
-   functable = new SymbolTable<Symbol, FuncSymbolType>();
    annotate_with_types();
 
     if (classtable->errors()) {

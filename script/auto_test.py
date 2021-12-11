@@ -82,7 +82,7 @@ def run_cmd(cmd, timeout=None):
 
 def mycmd(cmd):
     print(">>>>" + cmd)
-    result = run_cmd(cmd, 5)
+    result = run_cmd(cmd, 10)
     if (result[2] == "timeout"):
         exit(-1)
     else :
@@ -90,11 +90,23 @@ def mycmd(cmd):
 
 def get_my(case, pa):
     if (pa == "PA4"):
-        my_result[case] = mycmd("cd {} && ./lexer {} | ./parser $* | ./semant $*".format(MYDIR, CASE_DIR + '/' + case + ".cl")) 
+        my_result[case] = mycmd("cd {} && ./lexer {} | ./parser $* | ./semant $* > myresult".format(MYDIR, CASE_DIR + '/' + case + ".cl")) 
 
 def get_golden(case, pa):
     if (pa == "PA4"):
-        golden_result[case] = mycmd("cd {} && ./lexer {} | ./parser $* | semant $*".format(MYDIR, CASE_DIR + '/' + case + ".cl")) 
+        golden_result[case] = mycmd("cd {} && ./lexer {} | ./parser $* | semant $* > goldenresult".format(MYDIR, CASE_DIR + '/' + case + ".cl")) 
+
+def get_cmp(case, pa):
+    if (pa == "PA4"):
+        mycmd("cd {} && rm myresult goldenresult".format(MYDIR))
+        get_golden(case, pa)
+        get_my(case, pa)
+        res = mycmd("cd {} && diff myresult goldenresult".format(MYDIR))
+        if len(res) == 0:
+            return True
+        else:
+            return False
+    return False
 
 def clean_s():
     mycmd("cd {} && make clean".format(MYDIR))
@@ -115,18 +127,16 @@ if __name__ == "__main__":
     pa = sys.argv[2]
     MYDIR = ROOT + "/assignments/" + pa
     clean_s()
-    result_file = open("result.txt", "+w")
+    faillog = open("faillog.txt", "+w")
 
     mycmd("cd {} && make clean && make -j && make {} -j".format(MYDIR, PA_mapping[pa]))
     if (cmd == "run"):
         for case in case_list:
             if (not os.path.isfile(CASE_DIR + '/' + case + ".cl")):
                 continue
-            get_golden(case, pa)
-            get_my(case, pa)
-            if (golden_result[case] != my_result[case]):
-                result_file.write("===== case {} result for golden is ===== \n{}".format(case, golden_result[case]))
-                result_file.write("===== case {} result for my is ===== \n{}".format(case, my_result[case]))
+            if (get_cmp(case, pa) == False):
+                faillog.write("===== case {} result for golden is ===== \n{}".format(case, golden_result[case]))
+                faillog.write("===== case {} result for my is ===== \n{}".format(case, my_result[case]))
                 print("case {} FAIL".format(case))
             else:
                 print("case {} PASS".format(case))
