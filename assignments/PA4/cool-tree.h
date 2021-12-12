@@ -175,10 +175,10 @@ public:
 class method_class : public Feature_class {
 protected:
    Symbol name;
-   Formals formals;
    Symbol return_type;
    Expression expr;
 public:
+   Formals formals;
    method_class(Symbol a1, Formals a2, Symbol a3, Expression a4) {
       name = a1;
       formals = a2;

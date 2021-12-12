@@ -35,26 +35,29 @@ static void semant_error(char *msg)
 void inherent_checking()
 {
    Class_ c1 = cur_class;
-   Class_ c2 = classtable->get_class_by_symbol(cur_class->get_class_parent());
-   if (c2 == NULL) {
+   Class_ c2 = cur_class;
+   bool initial = true;
+   if (classtable->get_class_by_symbol(cur_class->get_class_parent()) == NULL) {
       sprintf(log_buf, "can't get %s's parent!\n",
                         c1->get_class_name()->get_string());
       semant_error(log_buf);
-      fatal_error("inherent_checking error!");
+      fatal_error("Compilation halted due to static semantic errors.\n");
    }
 
    while(c1 != NULL && c2 != NULL) {
-      if (c1 == c2) {
-         sprintf(log_buf, "cyclic for class %s!\n",
+      if (c1 == c2 && c1->get_class_name() != Object && !initial) {
+         sprintf(log_buf, "cyclic for class %s!",
                            c1->get_class_name()->get_string());
          semant_error(log_buf);
-         fatal_error("inherent_checking error!");
+         fatal_error("Compilation halted due to static semantic errors.\n");
       }
       c1 = classtable->get_class_by_symbol(c1->get_class_parent());
-      if (c1 != NULL) {
-         c1 = classtable->get_class_by_symbol(c1->get_class_parent());
+      if (c1 == NULL) {
+         break;
       }
+      c1 = classtable->get_class_by_symbol(c1->get_class_parent());
       c2 = classtable->get_class_by_symbol(c2->get_class_parent());
+      initial = false;
    }
 }
 
@@ -76,10 +79,12 @@ static void add_ancestor_features()
 }
 
 // TODO need to do the parameter types validation
-static method_class *get_method_declare(Symbol cs, Symbol method_name)
+static method_class *get_method_declare(Symbol cs, Symbol method_name, Expressions paras)
 {
+   method_class* res;
    if (classtable == 0) {
-      fatal_error("classtable has not been initialized!\n");
+      semant_error("classtable has not been initialized!\n");
+      fatal_error("Compilation halted due to static semantic errors.\n");
    }
 
    Class_ c = classtable->get_class_by_symbol(cs);
@@ -94,19 +99,42 @@ static method_class *get_method_declare(Symbol cs, Symbol method_name)
       Feature f = features->nth(i);
       method_class *m = dynamic_cast<method_class*>(f);
       if (m && m->get_method_name() == method_name) {
+         if (m->formals->len() != paras->len()) {
+            sprintf(log_buf, "Method %s called with wrong number of arguments.", method_name->get_string());
+            semant_error(log_buf);
+            return m;
+         }
+         for(int i = paras->first(); paras->more(i); i = paras->next(i)) {
+            if (m->formals->nth(i)->get_type_decl() != paras->nth(i)->type) {
+               sprintf(log_buf, "In call of method %s, type %s of parameter y does not conform to declared type %s.",
+                                method_name->get_string(),
+                                paras->nth(i)->type->get_string(),
+                                m->formals->nth(i)->get_type_decl()->get_string());
+               semant_error(log_buf);
+               return m;
+            }
+         }
          return m;
       }
    }
 
    if (c->get_class_name() == Object) return NULL;
 
-   return get_method_declare(c->get_class_parent(), method_name);
+   res = get_method_declare(c->get_class_parent(), method_name, paras);
+
+   if (res == NULL) {
+      sprintf(log_buf, "Dispatch to undefined method %s.", method_name->get_string());
+      semant_error(log_buf);
+   }
+
+   return res;
 }
 
 static bool is_valid_class(Symbol cs)
 {
    if (classtable == 0) {
-      fatal_error("classtable has not been initialized!\n");
+      semant_error("classtable has not been initialized!\n");
+      fatal_error("Compilation halted due to static semantic errors.\n");
    }
 
    if (cs == SELF_TYPE) {
@@ -223,7 +251,7 @@ void class__class::annotate_with_types()
    scope_enter();
    vartable->addid(self, new VarSymbolType(self, SELF_TYPE));
    cur_class = this;
-   //inherent_checking();
+   inherent_checking();
    add_ancestor_features();
    
    for(int i = features->first(); features->more(i); i = features->next(i)) {
@@ -309,6 +337,7 @@ void assign_class::annotate_with_types()
    VarSymbolType *v = vartable->lookup(name);
    if (v == NULL) {
       semant_error("variable not declared before use in assign_class\n");
+      fatal_error("Compilation halted due to static semantic errors.\n");
    } else {
       if (!class_is_comfort(expr->type, v->type)) {
          sprintf(log_buf, "assign_class is not comfort for expr->type %s and v->type %s", expr->type->get_string(), v->type->get_string());
@@ -329,11 +358,8 @@ void static_dispatch_class::annotate_with_types()
    for(int i = actual->first(); actual->more(i); i = actual->next(i))
      actual->nth(i)->annotate_with_types();
    method_class *m = NULL;
-   m = get_method_declare(this->type_name, name);
+   m = get_method_declare(this->type_name, name, actual);
    if (m == NULL) {
-      sprintf(log_buf, "method %s:%s not declared before use in dispatch_class",
-               this->type_name->get_string(), name->get_string());
-      semant_error(log_buf);
       this->type = Object;
       return;
    }
@@ -354,15 +380,13 @@ void dispatch_class::annotate_with_types()
 
    method_class *m = NULL;
    if (expr->get_type() == SELF_TYPE) {
-      m = get_method_declare(cur_class->get_class_name(), name);
+      m = get_method_declare(cur_class->get_class_name(), name, actual);
    } else {
-      m = get_method_declare(expr->get_type(), name);
+      m = get_method_declare(expr->get_type(), name, actual);
    }
    
    if (m == NULL) {
-      sprintf(log_buf, "method %s:%s not declared before use in dispatch_class",
-               expr->get_type()->get_string(), name->get_string());
-      semant_error(log_buf);
+      fatal_error("Compilation halted due to static semantic errors.\n");
       this->type = Object;
       return;
    }
@@ -604,6 +628,7 @@ void object_class::annotate_with_types()
    if (v == NULL) {
       sprintf(log_buf, "variable %s not declared before use in object_class", name->get_string());
       semant_error(log_buf);
+      fatal_error("Compilation halted due to static semantic errors.\n");
       this->type = Object;
 
    } else {

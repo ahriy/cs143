@@ -91,12 +91,14 @@ Symbol get_return_type() { return return_type; }
 
 #define Formal_EXTRAS                              \
 virtual void dump_with_types(ostream&,int) = 0; \
-virtual void annotate_with_types() = 0; 
+virtual void annotate_with_types() = 0; \
+virtual Symbol get_type_decl() = 0;
 
 
 #define formal_EXTRAS                           \
 void dump_with_types(ostream&,int); \
-void annotate_with_types();   
+void annotate_with_types();   \
+Symbol get_type_decl() { return type_decl; }
 
 
 #define Case_EXTRAS                             \

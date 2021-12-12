@@ -96,6 +96,7 @@ bool ClassTable::add_class_to_classlist(Class_ c)
     for(int i = classlist->first(); classlist->more(i); i = classlist->next(i)) {
         if (classlist->nth(i)->get_class_name() == c->get_class_name()) {
             semant_error(c);
+            fatal_error("redefination of class!\n");
             return false;
         }
     }
