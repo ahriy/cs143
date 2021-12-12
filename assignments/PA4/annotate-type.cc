@@ -12,10 +12,6 @@
 #include "semant.h"
 #include <list>
 
-static char log_buf[256];
-class__class *cur_class;
-int cur_line = 1;
-
 static inline void scope_enter()
 {
    vartable->enterscope();
@@ -26,114 +22,10 @@ static inline void scope_exits()
    vartable->exitscope();
 }
 
-static void semant_error(char *msg)
-{
-   cerr << "[semant error " << cur_class->get_filename()->get_string() << ":" << cur_line << "] " << msg << endl;
-}
-
-// double pointer checking
-void inherent_checking()
-{
-   Class_ c1 = cur_class;
-   Class_ c2 = cur_class;
-   bool initial = true;
-   if (classtable->get_class_by_symbol(cur_class->get_class_parent()) == NULL) {
-      sprintf(log_buf, "can't get %s's parent!\n",
-                        c1->get_class_name()->get_string());
-      semant_error(log_buf);
-      fatal_error("Compilation halted due to static semantic errors.\n");
-   }
-
-   while(c1 != NULL && c2 != NULL) {
-      if (c1 == c2 && c1->get_class_name() != Object && !initial) {
-         sprintf(log_buf, "cyclic for class %s!",
-                           c1->get_class_name()->get_string());
-         semant_error(log_buf);
-         fatal_error("Compilation halted due to static semantic errors.\n");
-      }
-      c1 = classtable->get_class_by_symbol(c1->get_class_parent());
-      if (c1 == NULL) {
-         break;
-      }
-      c1 = classtable->get_class_by_symbol(c1->get_class_parent());
-      c2 = classtable->get_class_by_symbol(c2->get_class_parent());
-      initial = false;
-   }
-}
-
-static void add_ancestor_features()
-{
-   Class_ tmp = classtable->get_class_by_symbol(cur_class->get_class_parent());
-   while (tmp != NULL) {
-      Features features = tmp->get_class_features();
-      for(int i = features->first(); features->more(i); i = features->next(i)) {
-         Feature f = features->nth(i);
-         attr_class *attr = dynamic_cast<attr_class*>(f);
-         if (attr) {
-            vartable->addid(attr->name, new VarSymbolType(attr->name, attr->type_decl));
-         }
-      }
-      tmp = classtable->get_class_by_symbol(tmp->get_class_parent());
-   }
-   
-}
-
-// TODO need to do the parameter types validation
-static method_class *get_method_declare(Symbol cs, Symbol method_name, Expressions paras)
-{
-   method_class* res;
-   if (classtable == 0) {
-      semant_error("classtable has not been initialized!\n");
-      fatal_error("Compilation halted due to static semantic errors.\n");
-   }
-
-   Class_ c = classtable->get_class_by_symbol(cs);
-
-   if (c == NULL) {
-      sprintf(log_buf, "can't find class %s declaration in symbol table!\n", cs->get_string());
-      semant_error(log_buf);
-      return NULL;
-   }
-   Features features = c->get_class_features();
-   for(int i = features->first(); features->more(i); i = features->next(i)) {
-      Feature f = features->nth(i);
-      method_class *m = dynamic_cast<method_class*>(f);
-      if (m && m->get_method_name() == method_name) {
-         if (m->formals->len() != paras->len()) {
-            sprintf(log_buf, "Method %s called with wrong number of arguments.", method_name->get_string());
-            semant_error(log_buf);
-            return m;
-         }
-         for(int i = paras->first(); paras->more(i); i = paras->next(i)) {
-            if (m->formals->nth(i)->get_type_decl() != paras->nth(i)->type) {
-               sprintf(log_buf, "In call of method %s, type %s of parameter y does not conform to declared type %s.",
-                                method_name->get_string(),
-                                paras->nth(i)->type->get_string(),
-                                m->formals->nth(i)->get_type_decl()->get_string());
-               semant_error(log_buf);
-               return m;
-            }
-         }
-         return m;
-      }
-   }
-
-   if (c->get_class_name() == Object) return NULL;
-
-   res = get_method_declare(c->get_class_parent(), method_name, paras);
-
-   if (res == NULL) {
-      sprintf(log_buf, "Dispatch to undefined method %s.", method_name->get_string());
-      semant_error(log_buf);
-   }
-
-   return res;
-}
-
 static bool is_valid_class(Symbol cs)
 {
    if (classtable == 0) {
-      semant_error("classtable has not been initialized!\n");
+      semant_error_log("classtable has not been initialized!\n");
       fatal_error("Compilation halted due to static semantic errors.\n");
    }
 
@@ -142,13 +34,13 @@ static bool is_valid_class(Symbol cs)
    }
 
    if (cs == NULL) {
-      semant_error("is_valid_class: Symbol is NULL");
+      semant_error_log("is_valid_class: Symbol is NULL");
       return false;
    }
 
    if (classtable->get_class_by_symbol(cs) == NULL) {
       sprintf(log_buf, "is_valid_class:class %s can't find class in class table", cs->get_string());
-      semant_error(log_buf);
+      semant_error_log(log_buf);
    }
 
    return true;
@@ -162,12 +54,10 @@ static bool class_is_comfort(Symbol cs1, Symbol cs2)
    }
 
    if (cs1 == SELF_TYPE) {
-      // TODO maybe not right
       cs1 = cur_class->get_class_name();
    }
 
    if (cs2 == SELF_TYPE) {
-      // TODO maybe not right
       cs2 = cur_class->get_class_name();
    }
 
@@ -237,6 +127,143 @@ Symbol type_join(Symbol cs1, Symbol cs2)
    return Object;
 }
 
+static void check_ancestor_method_override(Symbol ancestor, method_class* method)
+{
+   Class_ ac = classtable->get_class_by_symbol(ancestor);
+   if (ac == NULL || method == NULL) {
+      return;
+   }
+
+   Features features = ac->get_class_features();
+   for(int i = features->first(); features->more(i); i = features->next(i)) {
+      Feature f = features->nth(i);
+      method_class *m = dynamic_cast<method_class*>(f);
+      if (m && method->get_method_name() == m->get_method_name()) {
+         if (m->formals->len() != method->formals->len()) {
+            sprintf(log_buf, "Incompatible number of formal parameters in redefined method %s.", method->get_method_name()->get_string());
+            semant_error_log(log_buf);
+         }
+         for(int i = m->formals->first(); m->formals->more(i); i = m->formals->next(i)) {
+            if (m->formals->nth(i)->get_type_decl() != method->formals->nth(i)->get_type_decl()) {
+               sprintf(log_buf, "In redefined method %s, parameter type %s is different from original type %s.",
+                                method->get_method_name()->get_string(),
+                                method->formals->nth(i)->get_type_decl()->get_string(),
+                                m->formals->nth(i)->get_type_decl()->get_string());
+               semant_error_log(log_buf);
+            }
+         }
+      }
+   }
+
+   check_ancestor_method_override(ac->get_class_parent(), method);
+}
+
+void inherent_checking()
+{
+   Class_ c1 = cur_class;
+   Class_ c2 = cur_class;
+   bool initial = true;
+   if (classtable->get_class_by_symbol(cur_class->get_class_parent()) == NULL) {
+      sprintf(log_buf, "can't get %s's parent!\n",
+                        c1->get_class_name()->get_string());
+      semant_error_log(log_buf);
+      fatal_error("Compilation halted due to static semantic errors.\n");
+   }
+
+   // double pointer checking for cyclic inherits
+   while(c1 != NULL && c2 != NULL) {
+      if (c1 == c2 && c1->get_class_name() != Object && !initial) {
+         sprintf(log_buf, "cyclic for class %s!",
+                           c1->get_class_name()->get_string());
+         semant_error_log(log_buf);
+         fatal_error("Compilation halted due to static semantic errors.\n");
+      }
+      c1 = classtable->get_class_by_symbol(c1->get_class_parent());
+      if (c1 == NULL) {
+         break;
+      }
+      c1 = classtable->get_class_by_symbol(c1->get_class_parent());
+      c2 = classtable->get_class_by_symbol(c2->get_class_parent());
+      initial = false;
+   }
+
+   Features features = cur_class->get_class_features();
+   for(int i = features->first(); features->more(i); i = features->next(i)) {
+      Feature f = features->nth(i);
+      method_class *m = dynamic_cast<method_class*>(f);
+      if (m) {
+         check_ancestor_method_override(cur_class->get_class_parent(), m);
+      }
+   }
+}
+
+static void add_ancestor_features()
+{
+   Class_ tmp = classtable->get_class_by_symbol(cur_class->get_class_parent());
+   while (tmp != NULL) {
+      Features features = tmp->get_class_features();
+      for(int i = features->first(); features->more(i); i = features->next(i)) {
+         Feature f = features->nth(i);
+         attr_class *attr = dynamic_cast<attr_class*>(f);
+         if (attr) {
+            vartable->addid(attr->name, new VarSymbolType(attr->name, attr->type_decl));
+         }
+      }
+      tmp = classtable->get_class_by_symbol(tmp->get_class_parent());
+   }
+}
+
+static method_class *get_method_declare(Symbol cs, Symbol method_name, Expressions paras)
+{
+   method_class* res;
+   if (classtable == 0) {
+      semant_error_log("classtable has not been initialized!\n");
+      fatal_error("Compilation halted due to static semantic errors.\n");
+   }
+
+   Class_ c = classtable->get_class_by_symbol(cs);
+
+   if (c == NULL) {
+      sprintf(log_buf, "can't find class %s declaration in symbol table!\n", cs->get_string());
+      semant_error_log(log_buf);
+      return NULL;
+   }
+   Features features = c->get_class_features();
+   for(int i = features->first(); features->more(i); i = features->next(i)) {
+      Feature f = features->nth(i);
+      method_class *m = dynamic_cast<method_class*>(f);
+      if (m && m->get_method_name() == method_name) {
+         if (m->formals->len() != paras->len()) {
+            sprintf(log_buf, "Method %s called with wrong number of arguments.", method_name->get_string());
+            semant_error_log(log_buf);
+            return m;
+         }
+         for(int i = paras->first(); paras->more(i); i = paras->next(i)) {
+            if (!class_is_comfort(paras->nth(i)->type, m->formals->nth(i)->get_type_decl())) {
+               sprintf(log_buf, "In call of method %s, type %s of parameter y does not conform to declared type %s.",
+                                method_name->get_string(),
+                                paras->nth(i)->type->get_string(),
+                                m->formals->nth(i)->get_type_decl()->get_string());
+               semant_error_log(log_buf);
+               return m;
+            }
+         }
+         return m;
+      }
+   }
+
+   if (c->get_class_name() == Object) return NULL;
+
+   res = get_method_declare(c->get_class_parent(), method_name, paras);
+
+   if (res == NULL) {
+      sprintf(log_buf, "Dispatch to undefined method %s.", method_name->get_string());
+      semant_error_log(log_buf);
+   }
+
+   return res;
+}
+
 //
 void program_class::annotate_with_types()
 {
@@ -260,7 +287,7 @@ void class__class::annotate_with_types()
       if (attr) {
          if (vartable->lookup(attr->name) != NULL) {
             sprintf(log_buf, "redef of %s", attr->name->get_string());
-            semant_error(log_buf);
+            semant_error_log(log_buf);
          }
          vartable->addid(attr->name, new VarSymbolType(attr->name, attr->type_decl));
       }
@@ -280,7 +307,7 @@ void method_class::annotate_with_types()
      formals->nth(i)->annotate_with_types();
    expr->annotate_with_types();
    if (!class_is_comfort(expr->type, return_type)) {
-      semant_error("class is not comfort");
+      semant_error_log("class is not comfort");
    }
    scope_exits();
 }
@@ -294,7 +321,7 @@ void attr_class::annotate_with_types()
    init->annotate_with_types();
    if (init->get_type() != NULL && !class_is_comfort(init->type, type_decl)) {
       sprintf(log_buf, "attr_class is not comfort for init->type %s and type_decl %s", init->get_type()->get_string(), type_decl->get_string());
-      semant_error(log_buf);
+      semant_error_log(log_buf);
    }
 }
 
@@ -336,12 +363,12 @@ void assign_class::annotate_with_types()
    this->type = expr->type;
    VarSymbolType *v = vartable->lookup(name);
    if (v == NULL) {
-      semant_error("variable not declared before use in assign_class\n");
+      semant_error_log("variable not declared before use in assign_class\n");
       fatal_error("Compilation halted due to static semantic errors.\n");
    } else {
       if (!class_is_comfort(expr->type, v->type)) {
          sprintf(log_buf, "assign_class is not comfort for expr->type %s and v->type %s", expr->type->get_string(), v->type->get_string());
-         semant_error(log_buf);
+         semant_error_log(log_buf);
       }
    }
 }
@@ -411,7 +438,7 @@ void cond_class::annotate_with_types()
    then_exp->annotate_with_types();
    else_exp->annotate_with_types();
    if (pred->type != Bool) {
-      semant_error("pred is not Bool");
+      semant_error_log("pred is not Bool");
    }
 
    this->type = type_join(then_exp->get_type(), else_exp->get_type());
@@ -428,7 +455,7 @@ void loop_class::annotate_with_types()
    pred->annotate_with_types();
    body->annotate_with_types();
    if (pred->type != Bool) {
-      semant_error("pred is not Bool");
+      semant_error_log("pred is not Bool");
    }
    type = Object;
 }
@@ -446,7 +473,7 @@ void typcase_class::annotate_with_types()
       cases->nth(i)->annotate_with_types();
       branch_class* b = dynamic_cast<branch_class *>(cases->nth(i));
       if (b == NULL) {
-         semant_error("bad branch class");
+         semant_error_log("bad branch class");
       } else {
          if (i == cases->first()) {
             this->type = b->expr->type;
@@ -496,7 +523,7 @@ static bool type_expect_check(Symbol actual, Symbol expect)
       sprintf(log_buf, "e1->type is %s but expected is %s", 
                         actual? actual->get_string() : "NULL",
                         expect? expect->get_string() : "NULL");
-      semant_error(log_buf);
+      semant_error_log(log_buf);
       return false;
    }
 
@@ -627,7 +654,7 @@ void object_class::annotate_with_types()
    VarSymbolType *v = vartable->lookup(name);
    if (v == NULL) {
       sprintf(log_buf, "variable %s not declared before use in object_class", name->get_string());
-      semant_error(log_buf);
+      semant_error_log(log_buf);
       fatal_error("Compilation halted due to static semantic errors.\n");
       this->type = Object;
 

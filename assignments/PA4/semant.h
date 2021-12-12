@@ -95,5 +95,18 @@ extern Symbol
     type_name,
     val;
 
+extern char log_buf[256];
+extern class__class *cur_class;
+extern int cur_line;
+extern ClassTable *classtable;
+
+inline void semant_error_log(char *msg)
+{
+   cerr << "[semant error " << cur_class->get_filename()->get_string() << ":" << cur_line << "] " << msg << endl;
+   if (classtable != NULL) {
+      classtable->semant_error();
+   }
+}
+
 #endif
 

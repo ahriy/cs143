@@ -10,6 +10,10 @@
 extern int semant_debug;
 extern char *curr_filename;
 
+char log_buf[256];
+class__class *cur_class;
+int cur_line = 1;
+
 Symbol 
     arg,
     arg2,
@@ -81,12 +85,13 @@ ClassTable::ClassTable(Classes classes) : semant_errors(0) , error_stream(cerr)
     for(int i = classes->first(); classes->more(i); i = classes->next(i)) {
         add_class_to_classlist(classes->nth(i));
     }
+    semant_errors = 0;
 }
 
 bool ClassTable::add_class_to_classlist(Class_ c)
 {
     if (c == NULL) {
-        semant_error(c);
+        return false;
     }
     if (classlist == NULL) {
         classlist = list_node<Class_>::single(c);
@@ -95,8 +100,8 @@ bool ClassTable::add_class_to_classlist(Class_ c)
     
     for(int i = classlist->first(); classlist->more(i); i = classlist->next(i)) {
         if (classlist->nth(i)->get_class_name() == c->get_class_name()) {
-            semant_error(c);
-            fatal_error("redefination of class!\n");
+            sprintf(log_buf, "redefination of class %s", c->get_class_name()->get_string());
+            semant_error_log(log_buf);
             return false;
         }
     }
@@ -296,6 +301,10 @@ void program_class::semant()
 
    vartable = new SymbolTable<Symbol, VarSymbolType>();
    annotate_with_types();
+
+    if (classtable->get_class_by_symbol(Main) == NULL) {
+        cerr << "Class Main is not defined." << endl;
+    }
 
     if (classtable->errors()) {
         cerr << "Compilation halted due to static semantic errors." << endl;
